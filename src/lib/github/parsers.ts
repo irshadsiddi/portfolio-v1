@@ -13,10 +13,10 @@ export function parseContributions(html: string): { weeks: HeatCell[][]; total: 
     });
   }
 
-  const tipRe = /for="contribution-day-component-(\d+)-(\d+)"[^>]*>(\d+) contributions? on /g;
+  const tipRe = /for="contribution-day-component-(\d+)-(\d+)"[^>]*>(No|[\d,]+) contributions? on /g;
   for (const match of html.matchAll(tipRe)) {
     const cell = grid.get(`${match[1]}-${match[2]}`);
-    if (cell) cell.count = Number(match[3]);
+    if (cell) cell.count = match[3] === "No" ? 0 : Number(match[3]!.replaceAll(",", ""));
   }
 
   const columns = new Set<number>();
@@ -45,9 +45,9 @@ export function parseContributions(html: string): { weeks: HeatCell[][]; total: 
     weeks.push(week);
   }
 
-  const headerMatch = html.match(/(\d+)\s*contributions\s*in the last year/);
+  const headerMatch = html.match(/([\d,]+)\s*contributions\s*in the last year/);
   const total = headerMatch
-    ? Number(headerMatch[1])
+    ? Number(headerMatch[1]!.replaceAll(",", ""))
     : weeks.flat().reduce((sum, cell) => sum + (cell.count ?? 0), 0);
 
   return { weeks, total };
