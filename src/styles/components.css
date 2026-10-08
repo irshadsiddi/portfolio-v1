@@ -1,0 +1,7 @@
+/* Component recipes use Tailwind @utility, @apply, and @variant. */
+@import "./shared.css";
+@import "./shell.css";
+@import "./navigation.css";
+@import "./home.css";
+@import "./github.css";
+@import "./projects.css";

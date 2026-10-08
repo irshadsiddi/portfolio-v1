@@ -1,0 +1,21 @@
+/* Tailwind recipes for component layouts, descendants, and interaction states. */ /* app/error.tsx */
+@utility ui-retry-button {
+  @apply inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium;
+  @apply text-primary-foreground transition-colors;
+  @variant hover {
+    @apply bg-primary/90;
+  }
+  @variant focus-visible {
+    @apply ring-2 ring-ring outline-none;
+  }
+}
+@utility ui-return-home-link {
+  @apply inline-flex items-center justify-center rounded-md border border-input bg-background px-4;
+  @apply py-2 text-sm font-medium text-foreground transition-colors;
+  @variant hover {
+    @apply bg-accent;
+  }
+  @variant focus-visible {
+    @apply ring-2 ring-ring outline-none;
+  }
+}

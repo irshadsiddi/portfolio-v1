@@ -1,0 +1,335 @@
+/* Shared layout, motion, and surface tokens. Typography uses Tailwind’s standard scale. */
+@theme inline {
+  /* Typography */
+  --font-work: "Work Sans", sans-serif;
+  --font-body: "DM Sans", "Work Sans", system-ui, sans-serif;
+  --leading-browser: normal;
+  --leading-mobile-nav-leading: 1.2;
+  --tracking-mobile-nav-tracking: 0.12em;
+  --leading-contribution-heading-leading: 1.05;
+  --tracking-contribution-heading-tracking: -0.01em;
+  --font-heatmap-tooltip-font: "DM Sans", "Work Sans", sans-serif;
+  --tracking-heatmap-legend-tracking: 0.08em;
+  --leading-experience-body-leading: 1.65;
+  --tracking-experience-top-tracking: 0.02em;
+  --leading-technical-detail-leading: 1.6;
+  --leading-hero-leading: 1.02;
+  --tracking-avail-badge-tracking: 0.06em;
+  --tracking-lab-kind-tracking: 0.09em;
+  --leading-statement-leading: 1.75;
+  --leading-project-card-title-leading: 1.15;
+  --leading-project-card-description-leading: 1.55;
+  /* Spacing and dimensions */
+  --spacing-header-height: 3.7rem;
+  --spacing-control-gap: 0.4rem;
+  --spacing-search-height: 1.9rem;
+  --spacing-control-inset: 0.45rem;
+  --spacing-panel-gap: 0.65rem;
+  --spacing-search-width: 2.2rem;
+  --spacing-shortcut-gap: 0.12rem;
+  --spacing-compact-inset: 0.3rem;
+  --spacing-menu-inset: 0.7rem;
+  --spacing-section-gap: 1.4rem;
+  --spacing-label-inset: 0.35rem;
+  --spacing-label-gap: 0.6rem;
+  --spacing-chip-inset: 0.32rem;
+  --spacing-activity-offset: 3.15rem;
+  --spacing-section-padding: var(--section-padding);
+  --spacing-section-inset: 1.15rem;
+  --spacing-timeline-offset: 2.05rem;
+  --spacing-commit-inset: 0.1rem;
+  --spacing-company-inset: 0.22rem;
+  --spacing-card-inset: 0.55rem;
+  --spacing-button-inset: 0.8rem;
+  --spacing-small-inset: 0.2rem;
+  --spacing-pill-inset: 0.38rem;
+  --spacing-badge-inset: 0.15rem;
+  --spacing-key-inset: 0.05rem;
+  --spacing-sort-inset: 0.85rem;
+  --spacing-tag-padding: 0.36rem;
+  --spacing-tag-inset: 0.16rem;
+  --spacing-preview-dot: 7px;
+  --spacing-feed-inset: 0.9rem;
+  --spacing-chart-inset: 1.2rem;
+  --spacing-site-shell-w: min(var(--content-width), calc(100% - 2rem));
+  --spacing-grain-inset: -50%;
+  --spacing-topbar-gap: clamp(0.8rem, 2vw, 1.65rem);
+  --spacing-mobile-nav-top: calc(100% + 0.5rem);
+  --spacing-heatmap-days-right: calc(100% + 0.8rem);
+  --spacing-heatmap-tooltip-max-w: calc(100vw - 24px);
+  --spacing-search-backdrop-pt: 14vh;
+  --spacing-search-dialog-w: min(34rem, 100%);
+  --spacing-experience-top-gap: 0.4rem 1rem;
+  --spacing-hero-gap: clamp(1.5rem, 3vw, 2.5rem);
+  --spacing-hero-pb: 0.08em;
+  --spacing-hero-cover-h: clamp(13rem, 28vw, 18rem);
+  --spacing-cover-width: calc(100% + 1.5rem);
+  --spacing-cover-mobile-width: calc(100% + 2rem);
+  --spacing-oss-sort-menu-top: calc(100% + 8px);
+  --spacing-pf-bars-inset: 1.2rem 1.5rem;
+  --spacing-pf-bars-gap: 6%;
+  --spacing-project-arrow-hidden: -6px;
+  --spacing-project-arrow-visible: 3px;
+  /* Layout */
+  --radius-button: 0.45rem;
+  --radius-dialog: 0.55rem;
+  --radius-control: 0.3rem;
+  --radius-compact: 0.2rem;
+  --radius-pill: 0.32rem;
+  --radius-panel: 0.4rem;
+  --radius-chart-bar: 3px 3px 0 0;
+  --grid-template-columns-project-body-grid-cols: 14rem minmax(0, 1fr);
+  --grid-template-columns-navigation: auto minmax(0, 1fr) auto;
+  --border-width-topbar-border-b: 1.5px;
+  --grid-template-columns-navigation-mobile: minmax(0, 1fr) auto;
+  --grid-template-columns-mobile-nav-grid-cols: 1.5rem minmax(0, 1fr);
+  --radius-heat-cell-rounded: 3px;
+  --grid-template-rows-heatmap-days-grid-rows: repeat(7, 1fr);
+  --radius-search-results-rounded: 0.35rem;
+  --grid-template-columns-experience-section-grid-cols: 8.5rem minmax(0, 1fr);
+  --grid-template-columns-experience-grid-cols: 6.5rem 1fr;
+  --grid-template-columns-hero-grid-cols: 7rem minmax(0, 1fr) 8rem;
+  --grid-template-columns-profile: 5.5rem minmax(0, 1fr) auto;
+  --grid-template-columns-profile-mobile: 4.5rem minmax(0, 1fr);
+  --radius-eq-rounded: 1px;
+  --grid-template-columns-lab: 6.5rem minmax(0, 1fr) auto 1rem;
+  --grid-template-columns-lab-mobile: minmax(0, 1fr) 1rem;
+  --grid-template-columns-now-panel-grid-cols: 6rem 1fr;
+  --grid-template-columns-recognition-list-grid-cols: 10rem 1fr;
+  --grid-template-columns-footer: 2fr 1fr 1fr auto;
+  --grid-template-columns-footer-mobile: 1fr 1fr;
+  --grid-template-columns-pr: 1.4rem minmax(0, 1fr) auto auto auto;
+  --grid-template-columns-pr-mobile: 1.2rem minmax(0, 1fr) auto;
+  --radius-pcard-rounded: 0.28rem;
+  --radius-inherited: inherit;
+  /* Surface colors */
+  --color-print-ink: #333;
+  --color-pill-border: color-mix(in oklab, var(--foreground) 14%, var(--border));
+  --color-topbar-bg: color-mix(in oklab, var(--background) 82%, transparent);
+  --color-interactive-border: color-mix(in oklab, var(--foreground) 35%, transparent);
+  --color-search-backdrop-bg: color-mix(in oklab, var(--background) 55%, transparent);
+  --color-experience-top-bg: color-mix(in oklab, var(--surface) 80%, transparent);
+  --color-experience-top-dark-bg: color-mix(in oklab, var(--surface) 55%, transparent);
+  --color-sort-option-bg: color-mix(in oklab, var(--foreground) 7%, transparent);
+  --color-oss-tabs-bg: color-mix(in oklab, var(--surface) 70%, transparent);
+  --color-oss-row-bg: color-mix(in oklab, var(--foreground) 3%, transparent);
+  --color-project-tag-border: color-mix(in oklab, var(--foreground) 25%, transparent);
+  --color-preview-window-dot-bg: color-mix(in oklab, var(--foreground) 22%, transparent);
+  --color-pcard-border: color-mix(in oklab, var(--foreground) 30%, transparent);
+  /* Gradients */
+  --background-image-ambient-bg: radial-gradient(
+    ellipse 60% 28% at 50% -5%,
+    color-mix(in oklab, var(--foreground) 5%, transparent),
+    transparent 70%
+  );
+  --background-image-grain-bg: url("data:image/svg+xml;utf8,<svg_xmlns="http://www.w3.org/2000/svg"_width="160"_height="160"><filter_id="n"><feTurbulence_type="fractalNoise"_baseFrequency="0.9"_numOctaves="2"_stitchTiles="stitch"/></filter><rect_width="100%"_height="100%"_filter="url(%23n)"/></svg>");
+  --background-image-pill: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--background) 92%, white) 0%,
+    color-mix(in oklab, var(--background) 96%, var(--foreground)) 52%,
+    color-mix(in oklab, var(--background) 90%, var(--foreground)) 100%
+  );
+  --background-image-pill-dark: linear-gradient(
+    180deg,
+    oklch(0.24 0 0) 0%,
+    oklch(0.18 0 0) 52%,
+    oklch(0.14 0 0) 100%
+  );
+  --background-image-heat-cell-active-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, white 22%, transparent),
+    transparent 55%,
+    color-mix(in oklab, black 10%, transparent)
+  );
+  --background-image-contribution-panel-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--background) 96%, var(--foreground)),
+    var(--background)
+  );
+  --background-image-contribution-panel-dark-bg: linear-gradient(
+    180deg,
+    oklch(0.15 0 0),
+    oklch(0.115 0 0)
+  );
+  --background-image-contribution-handle-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--background) 92%, white),
+    color-mix(in oklab, var(--background) 96%, var(--foreground)) 52%,
+    color-mix(in oklab, var(--background) 90%, var(--foreground))
+  );
+  --background-image-contribution-handle-dark-bg: linear-gradient(
+    180deg,
+    oklch(0.24 0 0),
+    oklch(0.18 0 0) 52%,
+    oklch(0.14 0 0)
+  );
+  --background-image-heatmap-tooltip-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--foreground) 82%, white) 0%,
+    var(--foreground) 48%,
+    color-mix(in oklab, var(--foreground) 86%, black) 100%
+  );
+  --background-image-hero-cover-bg: linear-gradient(180deg, transparent 45%, var(--background));
+  --background-image-back-top-bg:
+    linear-gradient(180deg, var(--sheen) 0%, transparent 48%),
+    linear-gradient(180deg, var(--fill-top) 0%, var(--fill-bottom) 100%);
+  --background-image-oss-sort-trigger-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--surface) 88%, var(--foreground)),
+    var(--surface) 55%,
+    color-mix(in oklab, var(--surface) 92%, black)
+  );
+  --background-image-pr-tab-inactive-bg: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--foreground) 94%, white) 0%,
+    var(--foreground) 46%,
+    color-mix(in oklab, var(--foreground) 86%, black) 100%
+  );
+  --background-image-preview-canvas-bg: radial-gradient(
+    color-mix(in oklab, var(--foreground) 10%, transparent) 1px,
+    transparent 1px
+  );
+  --background-image-preview-chart-bar-bg: linear-gradient(
+    180deg,
+    var(--foreground),
+    color-mix(in oklab, var(--foreground) 25%, transparent)
+  );
+  --background-image-project-edge: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--foreground) 55%, transparent),
+    transparent 70%
+  );
+  --background-image-project-spotlight: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--foreground) 6%, transparent),
+    transparent 65%
+  );
+  /* Shadows */
+  --shadow-pill:
+    inset 0 1px 0 color-mix(in oklab, white 75%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, var(--foreground) 6%, transparent),
+    0 1px 2px color-mix(in oklab, black 10%, transparent),
+    0 4px 10px -6px color-mix(in oklab, black 25%, transparent);
+  --shadow-pill-dark:
+    inset 0 1px 0 oklch(1 0 0/0.12), inset 0 -1px 0 oklch(0 0 0/0.4), 0 1px 2px oklch(0 0 0/0.5),
+    0 6px 14px -8px oklch(0 0 0/0.7);
+  --shadow-heat-cell-shadow: inset 0 0 0 1px color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow-heat-cell-empty-shadow:
+    inset 0 1px 1px color-mix(in oklab, black 8%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, var(--foreground) 5%, transparent);
+  --shadow-heat-cell-empty-dark-shadow:
+    inset 0 1px 1px oklch(0 0 0/0.5), inset 0 0 0 1px oklch(1 0 0/0.03);
+  --shadow-heat-cell-active-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 35%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, black 10%, transparent),
+    0 1px 1px color-mix(in oklab, black 10%, transparent);
+  --shadow-heat-cell-active-dark-shadow:
+    inset 0 1px 0 oklch(1 0 0/0.28), inset 0 0 0 1px oklch(0 0 0/0.35), 0 1px 2px oklch(0 0 0/0.5);
+  --shadow-contribution-panel-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 60%, transparent),
+    0 1px 2px color-mix(in oklab, black 6%, transparent),
+    0 14px 30px -22px color-mix(in oklab, black 35%, transparent);
+  --shadow-contribution-panel-dark-shadow:
+    inset 0 1px 0 oklch(1 0 0/0.07), 0 18px 40px -24px oklch(0 0 0/0.8);
+  --shadow-contribution-live-dot-shadow: 0 0 0 0
+    color-mix(in oklab, var(--activity-foreground) 50%, transparent);
+  --shadow-contribution-handle-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 75%, transparent),
+    0 1px 2px color-mix(in oklab, black 10%, transparent),
+    0 4px 10px -6px color-mix(in oklab, black 25%, transparent);
+  --shadow-heat-cell-peak-dark-shadow: inset 0 1px 0 oklch(1 0 0/0.6), 0 0 8px oklch(1 0 0/0.18);
+  --shadow-heatmap-tooltip-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 42%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, black 22%, transparent),
+    0 10px 24px -9px color-mix(in oklab, black 58%, transparent);
+  --shadow-sort:
+    inset 0 1px 0 color-mix(in oklab, var(--foreground) 14%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, var(--foreground) 5%, transparent),
+    0 5px 14px -8px color-mix(in oklab, var(--foreground) 45%, transparent);
+  --shadow-sort-hover:
+    inset 0 1px 0 color-mix(in oklab, var(--foreground) 20%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, var(--foreground) 7%, transparent),
+    0 8px 18px -9px color-mix(in oklab, var(--foreground) 55%, transparent);
+  --shadow-oss-sort-menu-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--foreground) 10%, transparent),
+    0 14px 32px -12px color-mix(in oklab, var(--foreground) 40%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--foreground) 8%, transparent);
+  --shadow-pr-tab-inactive-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--background) 24%, transparent),
+    0 1px 2px color-mix(in oklab, var(--foreground) 30%, transparent);
+  --shadow-project-tag-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 8%, transparent),
+    0 2px 5px color-mix(in oklab, black 16%, transparent);
+  /* Motion and interaction */
+  --motion-site-shell-transform: translateX(-50%);
+  --animate-grain-animate: grain 8s steps(8) 0s infinite;
+  --transition-property-desktop-nav-transition: color;
+  --motion-underline-visible: scaleX(1);
+  --motion-underline-hidden: scaleX(0);
+  --transition-property-desktop-nav-transition-2: transform;
+  --ease-desktop-nav-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --transition-property-search-trigger-transition: color, border-color, box-shadow;
+  --motion-hover-lift: translateY(-2px) scale(1.015);
+  --motion-press: translateY(1px) scale(0.965);
+  --animate-mobile-nav-animate: spring-menu-in 0.38s var(--spring-snappy) 0s 1 normal both;
+  --animate-heat-cell-animate: heat-in 0.5s var(--spring-snappy) 0s 1 normal backwards;
+  --transition-property-heat-cell-transition: transform, opacity, filter, outline-color;
+  --transition-duration-heat-cell-duration: 0.34s, 0.22s, 0.22s, 0.22s;
+  --ease-heat-cell-ease: var(--spring-snappy), ease-out, ease-out, ease-out;
+  --animate-contribution-live-dot-animate: live-ping 2s ease-out 0s infinite;
+  --transition-property-contribution-handle-transition: transform, border-color;
+  --scale-hover: 1.015;
+  --scale-press: 0.965;
+  --animate-heatmap-tooltip-animate: heatmap-tooltip-in 0.24s var(--spring-snappy) 0s 1 normal both;
+  --animate-search-dialog-animate: rise 0.42s var(--spring-snappy) 0s 1 normal both;
+  --transition-property-experience-transition: background;
+  --ease-experience-ease: ease;
+  --motion-detail-toggle-transform: rotate(180deg);
+  --motion-detail-collapsed: translateY(-6px);
+  --transition-property-technical-detail-transition: height, opacity, transform;
+  --transition-duration-technical-detail-duration: 0.5s, 0.3s, 0.5s;
+  --ease-technical-detail-ease: var(--spring-snappy), ease, var(--spring-snappy);
+  --motion-detail-expanded: translateY(0);
+  --animate-hero-animate: line-up 1s var(--spring-gentle) 0s 1 normal both;
+  --animate-hero-copy-animate: rise 0.9s var(--spring-gentle) 0s 1 normal both;
+  --animate-pulse-dot-animate: ping 2s ease-out 0s infinite;
+  --animate-eq-animate: eq 1s ease-in-out 0s infinite;
+  --transition-property-lab-row-transition: background, padding;
+  --motion-lab-row-transform: translate(2px, -2px);
+  --transition-property-section-view-all-transition: color, transform;
+  --ease-section-view-all-ease: var(--spring-snappy), var(--spring-snappy);
+  --motion-link-hover: translateX(2px);
+  --motion-link-arrow: translate(1px, -1px);
+  --transition-property-back-top-transition: transform, box-shadow, filter;
+  --motion-back-top-transform: translateY(-1px);
+  --ease-oss-sort-trigger-ease: var(--spring-snappy), var(--spring-gentle), ease;
+  --transition-property-oss-sort-menu-transition: opacity, transform;
+  --transition-duration-oss-sort-menu-duration: 0.16s, 0.2s;
+  --ease-oss-sort-menu-ease: ease, cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-property-oss-list-wrap-transition: height;
+  --ease-oss-list-wrap-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-pr-list-item-animate: oss-row-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) 0s 1 normal
+    backwards;
+  --transition-property-project-tag-transition: transform, box-shadow, border-color;
+  --transition-duration-project-tag-duration: 0.2s, 0.25s, 0.2s;
+  --animate-preview-flow-line-animate: dash 3s linear 0s infinite;
+  --animate-preview-chart-bar-animate: grow 1s var(--spring-snappy) 0s 1 normal both;
+  --animate-preview-job-dot-running-animate: pulse-soft 1.2s ease-in-out 0s infinite;
+  --transition-property-pcard-transition: border-color, transform, background;
+  --motion-card-hover: translateY(-3px) scale(1.006);
+  --motion-card-touch: translateY(-2px);
+  --scale-heat-hover: 1.18;
+  --scale-menu-rest: 0.98;
+  --transform-origin-navigation: right;
+  --ease-theme-warp: ease-out;
+  /* Other visual details */
+  --background-size-underline-hidden: 0 1px;
+  --background-size-underline-visible: 100% 1px;
+  --filter-hero-cover-filter: grayscale(1) contrast(1.08);
+  --filter-link-pills-filter: brightness(0.96);
+  --opacity-now-panel-opacity: 0.7;
+  --background-size-preview-canvas-bg-size: 14px 14px;
+  --will-change-preview-canvas-will-change: opacity, transform;
+  --stroke-width-preview-flow-line-stroke: 0.4;
+  --background-position-link-underline: 0 100%;
+}

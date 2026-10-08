@@ -1,0 +1,698 @@
+/* components/home/command-palette.tsx */
+@utility ui-search-backdrop {
+  @apply fixed inset-0 z-80 grid search-backdrop-place-items bg-search-backdrop-bg bg-none px-6;
+  @apply pt-search-backdrop-pt pb-8 search-backdrop-backdrop-filter;
+  @variant max-small {
+    @apply px-3 pt-4 pb-4;
+  }
+  @variant print {
+    @apply hidden!;
+  }
+}
+@utility ui-search-dialog {
+  @apply flex max-h-[calc(100dvh-2rem)] w-search-dialog-w animate-search-dialog-animate flex-col overflow-hidden rounded-dialog border;
+  @apply border-solid border-(--glass-border) bg-background bg-none search-dialog-box-shadow;
+}
+@utility ui-search-input {
+  @apply flex items-center gap-3 border-b border-solid border-border p-4;
+  @variant focus-within {
+    @apply outline-1 -outline-offset-1 outline-(--glass-border);
+  }
+  & input {
+    @apply min-w-0 flex-1 border-0 bg-transparent bg-none text-base text-foreground outline-none;
+  }
+  & kbd {
+    @apply font-mono text-xs text-muted-foreground;
+  }
+}
+@utility ui-search-results {
+  @apply max-h-96 min-h-0 overflow-auto overscroll-contain p-control-gap;
+  & > p {
+    @apply p-4 font-mono text-xs text-muted-foreground;
+  }
+  & button {
+    @apply flex w-full cursor-pointer justify-between gap-4 rounded-search-results-rounded border-0;
+    @apply min-w-0 bg-transparent bg-none p-3 text-left text-sm text-foreground;
+    & > span {
+      @apply min-w-0 wrap-break-word;
+    }
+  }
+  & button.is-cursor {
+    @apply bg-accent bg-none;
+  }
+  & button.is-cursor:hover {
+    @apply bg-accent bg-none;
+  }
+  & button:hover {
+    @apply bg-transparent bg-none;
+  }
+  & small {
+    @apply font-mono text-xs text-muted-foreground;
+    @variant max-small {
+      @apply hidden;
+    }
+  }
+}
+@utility ui-cmd-group {
+  @apply mx-3 mt-2 mb-1 font-mono text-xs tracking-mobile-nav-tracking;
+  @apply text-muted-foreground uppercase;
+} /* components/home/experience-section.tsx */
+@utility ui-experience-section {
+  @apply document-width grid scroll-mt-16 grid-cols-experience-section-grid-cols gap-section-gap;
+  @apply border-t border-dotted border-(--document-rule) px-3 py-section-padding;
+  @variant max-document {
+    @apply grid-cols-1 gap-4 px-4;
+  }
+}
+@utility ui-experience {
+  @apply relative grid grid-cols-experience-grid-cols gap-4 border-b border-solid border-border px-0;
+  @apply py-section-inset transition-(--transition-property-experience-transition) duration-300;
+  @apply ease-experience-ease;
+  @variant max-small {
+    @apply grid-cols-1 gap-2;
+  }
+  @variant print {
+    @apply break-inside-avoid bg-transparent! bg-none! shadow-none!;
+  }
+  & h3 {
+    @apply m-0 font-serif text-xl font-normal;
+  }
+  &::before {
+    @apply absolute top-timeline-offset -left-6 hidden h-control-inset w-control-inset rounded-full;
+    @apply border border-solid border-(--muted-foreground) bg-background bg-none;
+    @apply transition-(--transition-property-experience-transition) duration-300 ease-experience-ease;
+    @apply content-empty;
+  }
+  @variant can-hover {
+    &:hover::before {
+      @apply bg-foreground bg-none;
+    }
+  }
+}
+@utility ui-commit {
+  @apply mt-2.5 flex flex-col gap-1 font-mono text-xs text-muted-foreground;
+  @variant print {
+    @apply text-print-ink!;
+  }
+  & span {
+    @apply w-fit rounded-compact border border-dashed border-border px-label-inset py-commit-inset;
+    @apply text-foreground;
+  }
+}
+@utility ui-experience-body {
+  @apply min-w-0;
+  & > p {
+    @apply max-w-2xl text-base leading-experience-body-leading text-muted-foreground;
+  }
+}
+@utility ui-experience-top {
+  @apply flex flex-wrap justify-between gap-experience-top-gap;
+  & span {
+    @apply rounded-full border border-solid border-border bg-experience-top-bg bg-none px-card-inset;
+    @apply py-company-inset font-work text-xs leading-normal font-medium;
+    @apply tracking-experience-top-tracking text-foreground;
+  }
+  @variant dark {
+    & span {
+      @apply bg-experience-top-dark-bg bg-none;
+    }
+  }
+}
+@utility ui-detail-toggle {
+  @apply flex cursor-pointer items-center gap-control-gap border-0 bg-transparent bg-none px-0;
+  @apply pt-label-gap pb-0 font-work text-sm font-medium text-foreground;
+  @variant print {
+    @apply hidden!;
+  }
+  & svg {
+    @apply transition-(--transition-property-desktop-nav-transition-2) duration-450 ease-spring-snappy;
+  }
+  &.is-open svg {
+    @apply transform-(--motion-detail-toggle-transform);
+  }
+}
+@utility ui-technical-detail {
+  @apply mt-4 h-0 transform-(--motion-detail-collapsed) overflow-hidden opacity-0;
+  @apply transition-(--transition-property-technical-detail-transition);
+  @apply duration-technical-detail-duration ease-technical-detail-ease;
+  @apply technical-detail-animation-timing-function;
+  @variant print {
+    @apply block! h-auto! transform-none! bg-transparent! bg-none! opacity-100! shadow-none!;
+  }
+  & > div > div {
+    @apply mt-button-inset flex flex-wrap gap-control-gap;
+  }
+  & p {
+    @apply m-0 text-sm leading-technical-detail-leading text-muted-foreground;
+  }
+  & span {
+    @apply rounded-compact bg-accent bg-none px-control-inset py-1 font-work text-xs;
+    @apply font-medium;
+  }
+  &.is-open {
+    @apply h-auto transform-(--motion-detail-expanded) opacity-100;
+  }
+} /* components/home/hero-section.tsx */
+@utility ui-hero {
+  @apply document-width block min-h-0 grid-cols-hero-grid-cols items-center gap-hero-gap px-3 pt-0;
+  @apply pb-6;
+  @variant max-document {
+    @apply px-4;
+  }
+  @variant max-navigation {
+    @apply grid-cols-1 gap-10;
+  }
+  & h1 {
+    @apply m-0 font-serif text-5xl leading-hero-leading font-normal tracking-normal;
+    @apply whitespace-normal;
+  }
+  & h1 {
+    @variant max-phone {
+      @apply text-[2rem] leading-tight;
+    }
+  }
+  & h1 .line {
+    @apply inline-block overflow-hidden pb-hero-pb align-bottom;
+  }
+  & h1 .line > * {
+    @apply inline-block animate-hero-animate;
+  }
+  & h1 .line:nth-of-type(2) > * {
+    @apply animation-delay-short;
+  }
+  & h1 .line:nth-of-type(3) > * {
+    @apply animation-delay-medium;
+  }
+  & h1 em {
+    @apply font-normal text-muted-foreground;
+  }
+}
+@utility ui-hero-cover {
+  @apply relative -mx-3 h-hero-cover-h w-cover-width overflow-hidden border-b-topbar-border-b;
+  @apply border-dotted border-border;
+  @variant max-phone {
+    @apply h-40;
+  }
+  @variant max-document {
+    @apply -mx-4 w-cover-mobile-width;
+  }
+  & > span {
+    @apply absolute right-4 bottom-menu-inset z-1 font-mono text-xs text-muted-foreground uppercase;
+  }
+  & video {
+    @apply block h-full w-full object-cover opacity-82 filter-(--filter-hero-cover-filter);
+  }
+  &::after {
+    @apply absolute inset-0 bg-transparent bg-hero-cover-bg content-empty;
+  }
+}
+@utility ui-hero-profile {
+  @apply -mx-3 grid w-cover-width grid-cols-profile items-center gap-5 border-b-topbar-border-b;
+  @apply border-dotted border-border px-3 pt-4 pb-5;
+  @variant max-document {
+    @apply -mx-4 w-cover-mobile-width grid-cols-profile-mobile gap-4 px-4;
+  }
+}
+@utility ui-profile-mark {
+  @apply relative grid aspect-square place-items-center overflow-hidden rounded-button border-2;
+  @apply border-solid border-(--glass-border) bg-foreground bg-none font-serif text-3xl;
+  @apply text-background;
+  @variant max-phone {
+    @apply w-18;
+  }
+  & small {
+    @apply absolute right-label-inset bottom-small-inset font-mono text-xs leading-browser;
+    @apply font-medium not-italic font-stretch-normal font-variant-normal;
+  }
+}
+@utility ui-hero-copy {
+  @apply min-w-0 animate-none;
+  & > .eyebrow {
+    @apply animate-hero-copy-animate;
+  }
+}
+@utility ui-avail-badge {
+  @apply mx-0 mt-0 mb-label-inset inline-flex animate-none items-center gap-2 rounded-full border-0;
+  @apply bg-transparent bg-none p-0 font-mono text-xs tracking-avail-badge-tracking;
+  @apply text-muted-foreground;
+}
+@utility ui-pulse-dot {
+  @apply relative size-2 rounded-full bg-foreground bg-none;
+  @variant print {
+    @apply hidden!;
+  }
+  &::after {
+    @apply absolute inset-0 animate-pulse-dot-animate rounded-full border border-solid;
+    @apply border-(--foreground) content-empty;
+  }
+}
+@utility ui-hero-role {
+  @apply mx-0 mt-1 mb-0 animate-none font-work text-base leading-normal font-normal tracking-normal;
+  @apply text-muted-foreground normal-case not-italic font-stretch-normal font-variant-normal;
+}
+@utility ui-hero-location {
+  @apply flex flex-wrap gap-x-3 gap-y-1;
+  @apply mx-0 mt-1 mb-0 font-mono text-sm leading-relaxed font-normal text-muted-foreground;
+  @apply not-italic font-stretch-normal font-variant-normal;
+}
+@utility ui-profile-now {
+  @apply flex max-w-56 items-center gap-card-inset text-sm leading-relaxed text-muted-foreground;
+  @variant max-document {
+    @apply col-span-full max-w-none;
+  }
+  & b {
+    @apply font-medium text-foreground;
+  }
+}
+@utility ui-eq {
+  @apply inline-flex h-3 items-end gap-0.5;
+  & i {
+    @apply w-0.5 animate-eq-animate rounded-eq-rounded bg-foreground bg-none;
+  }
+  & i:nth-child(2) {
+    @apply animation-delay-medium;
+  }
+  & i:nth-child(3) {
+    @apply eq-animation-delay;
+  }
+  & i:nth-child(4) {
+    @apply animation-delay-short;
+  }
+}
+@utility ui-hero-intro {
+  @apply grid grid-cols-navigation-mobile items-center gap-8 px-3 pt-section-inset pb-0;
+  @variant max-document {
+    @apply grid-cols-1 gap-4 px-0;
+  }
+  & > p {
+    @apply m-0 max-w-152 text-base leading-relaxed text-muted-foreground;
+  }
+}
+@utility ui-link-pills {
+  @variant max-small {
+    & a,
+    & button {
+      @apply min-h-11;
+    }
+  }
+  @apply m-0 flex animate-none flex-wrap justify-end gap-1.5;
+  @variant max-document {
+    @apply justify-start;
+  }
+  & .x-mark {
+    @apply text-sm leading-none;
+  }
+  & a {
+    @apply inline-flex cursor-pointer items-center gap-control-gap rounded-pill border border-solid;
+    @apply surface-pill px-card-inset py-pill-inset font-family-inherit text-sm;
+    @apply line-height-inherit font-medium text-foreground font-style-inherit font-stretch-inherit;
+    @apply no-underline font-variant-inherit;
+  }
+  & a:active {
+    @apply transform-(--motion-press) filter-(--filter-link-pills-filter) duration-100;
+  }
+  & a:active {
+    @variant touch {
+      @apply border-interactive-border;
+    }
+  }
+  & a:hover {
+    @variant can-hover {
+      @apply transform-(--motion-hover-lift) border-interactive-border;
+    }
+  }
+  & button {
+    @apply inline-flex cursor-pointer items-center gap-control-gap rounded-pill border border-solid;
+    @apply surface-pill px-card-inset py-pill-inset font-family-inherit text-sm;
+    @apply line-height-inherit font-medium text-foreground font-style-inherit font-stretch-inherit;
+    @apply no-underline font-variant-inherit;
+  }
+  & button:active {
+    @apply transform-(--motion-press) filter-(--filter-link-pills-filter) duration-100;
+  }
+  & button:active {
+    @variant touch {
+      @apply border-interactive-border;
+    }
+  }
+  & button:hover {
+    @variant can-hover {
+      @apply transform-(--motion-hover-lift) border-interactive-border;
+    }
+  }
+} /* components/home/icon-button.tsx */
+@utility ui-icon-button {
+  @variant max-small {
+    @apply min-h-11 w-11;
+  }
+  @apply grid min-h-8 w-8 cursor-pointer place-items-center rounded-tr-lg border-0 bg-transparent;
+  @apply bg-none p-0 text-muted-foreground shadow-none;
+  @apply transition-(--transition-property-search-trigger-transition) duration-420 ease-spring-snappy;
+  @variant hover {
+    @apply transform-(--motion-hover-lift) border-(--muted-foreground) text-foreground;
+    @apply search-trigger-box-shadow;
+  }
+  @variant active {
+    @apply transform-(--motion-press) duration-100;
+  }
+  @variant active {
+    @variant touch {
+      @apply border-(--muted-foreground) text-foreground search-trigger-box-shadow;
+    }
+  }
+} /* components/home/lab-section.tsx */
+@utility ui-editorial-section {
+  @apply document-width grid scroll-mt-16 grid-cols-experience-section-grid-cols gap-section-gap;
+  @apply border-t border-dotted border-(--document-rule) px-3 py-section-padding;
+  @variant max-document {
+    @apply grid-cols-1 gap-4 px-4;
+  }
+}
+@utility ui-lab-row {
+  @apply grid grid-cols-lab items-center gap-4 border-b border-solid border-border px-1 py-3;
+  @apply text-inherit no-underline transition-(--transition-property-lab-row-transition) duration-520;
+  @apply ease-spring-gentle;
+  @variant hover {
+    @apply bg-card bg-none pl-3 text-foreground;
+  }
+  @variant max-small {
+    @apply grid-cols-lab-mobile;
+  }
+  @variant can-hover {
+    &:hover .lab-arrow {
+      @apply transform-(--motion-lab-row-transform) text-foreground;
+    }
+  }
+}
+@utility ui-lab-kind {
+  @apply justify-self-start rounded-full border border-solid border-border px-2 py-badge-inset;
+  @apply font-work text-xs font-medium tracking-lab-kind-tracking text-muted-foreground uppercase;
+  @variant max-small {
+    @apply hidden;
+  }
+  &.lab-experiment {
+    @apply border-interactive-border text-foreground;
+  }
+}
+@utility ui-lab-body {
+  @apply flex min-w-0 flex-col gap-small-inset;
+  & b {
+    @apply text-base font-medium;
+  }
+  & small {
+    @apply text-sm text-muted-foreground;
+  }
+}
+@utility ui-lab-date {
+  @apply font-mono text-xs text-muted-foreground;
+  @variant max-small {
+    @apply hidden;
+  }
+}
+@utility ui-lab-arrow {
+  @apply text-muted-foreground transition-(--transition-property-desktop-nav-transition-2);
+  @apply duration-250 ease-spring-snappy;
+} /* components/home/open-source-section.tsx */
+@utility ui-open-source-grid {
+  @apply grid grid-cols-experience-section-grid-cols items-start gap-section-gap;
+  @variant max-document {
+    @apply grid-cols-1 gap-4;
+  }
+}
+@utility ui-section-eyebrow-block {
+  @apply m-0 mb-label-gap type-eyebrow;
+  @variant print {
+    @apply text-print-ink!;
+  }
+}
+@utility ui-section-title {
+  @apply m-0 mb-2 font-serif text-3xl leading-contribution-heading-leading font-normal;
+  @apply tracking-contribution-heading-tracking;
+  @variant max-document {
+    @apply text-2xl leading-tight;
+  }
+}
+@utility ui-open-source-link {
+  @apply inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent bg-none px-1 py-4;
+  @apply text-xs font-medium text-muted-foreground no-underline;
+  @apply transition-(--transition-property-desktop-nav-transition) duration-200 ease-spring-snappy;
+  @variant hover {
+    @apply text-foreground;
+  }
+  @variant print {
+    @apply hidden!;
+  }
+} /* components/home/profile-section.tsx */
+@utility ui-statement {
+  @apply document-width grid scroll-mt-16 grid-cols-experience-section-grid-cols gap-section-gap;
+  @apply border-t border-dotted border-(--document-rule) px-3 py-section-padding;
+  @variant max-document {
+    @apply grid-cols-1 gap-4 px-4;
+  }
+  & > div:last-child > p:not(.statement-lead) {
+    @apply max-w-2xl text-base leading-relaxed text-muted-foreground;
+  }
+}
+@utility ui-statement-lead {
+  @apply mx-0 mt-0 mb-1.5 font-serif text-3xl leading-contribution-heading-leading;
+  @variant max-document {
+    @apply text-2xl leading-tight;
+  }
+}
+@utility ui-now-panel {
+  @apply mt-5 rounded-sm border border-solid border-border bg-transparent bg-none px-5 py-0.5;
+  @variant print {
+    @apply hidden!;
+  }
+  & .eyebrow span {
+    @apply tracking-normal normal-case opacity-now-panel-opacity;
+  }
+  & li {
+    @apply grid grid-cols-now-panel-grid-cols text-sm;
+  }
+  & li {
+    @variant max-compact {
+      @apply grid-cols-1 gap-badge-inset;
+    }
+  }
+  & li span {
+    @apply pt-small-inset font-work text-xs font-medium tracking-heatmap-legend-tracking;
+    @apply text-muted-foreground uppercase;
+  }
+  & ul {
+    @apply mx-0 mt-3 mb-0 grid list-none gap-card-inset p-0;
+  }
+} /* components/home/projects-section.tsx */
+@utility ui-section-view-all {
+  @apply mt-4 inline-flex items-center gap-label-inset text-sm font-medium text-muted-foreground;
+  @apply no-underline transition-(--transition-property-section-view-all-transition) duration-300;
+  @apply ease-section-view-all-ease;
+  @variant hover {
+    @apply transform-(--motion-link-hover) text-foreground;
+  }
+  & svg {
+    @apply transition-(--transition-property-desktop-nav-transition-2) duration-300 ease-spring-snappy;
+  }
+  @variant can-hover {
+    &:hover svg {
+      @apply transform-(--motion-link-arrow);
+    }
+  }
+} /* components/home/recognition-section.tsx */
+@utility ui-recognition-list {
+  @apply border-t border-solid border-border;
+  & p {
+    @apply m-0 grid grid-cols-recognition-list-grid-cols gap-4 border-b border-bottom-style-solid;
+    @apply recognition-list-border-bottom-color px-0 py-3 text-base;
+    @variant max-small {
+      @apply grid-cols-1 gap-1;
+    }
+  }
+  & p {
+    @variant max-compact {
+      @apply grid-cols-1 gap-label-inset;
+    }
+  }
+  & span {
+    @apply font-work text-xs font-medium text-muted-foreground;
+  }
+} /* components/home/section-title.tsx */
+@utility ui-section-number {
+  @apply mb-1 block font-mono text-xs leading-normal tracking-mobile-nav-tracking;
+  @apply text-muted-foreground uppercase;
+}
+@utility ui-section-heading {
+  @apply m-0 font-serif text-3xl leading-contribution-heading-leading font-normal;
+  @variant max-document {
+    @apply text-2xl leading-tight;
+  }
+} /* components/home/site-footer.tsx */
+@utility ui-colophon {
+  @apply mx-auto grid w-full grid-cols-footer flex-wrap items-start justify-between gap-4 px-0;
+  @apply font-body text-sm text-muted-foreground;
+  @variant max-phone {
+    @apply grid-cols-1;
+  }
+  @variant phone-to-document {
+    @apply grid-cols-footer-mobile;
+  }
+  & kbd {
+    @apply rounded-compact border border-solid border-border px-compact-inset py-key-inset font-mono;
+    @apply text-xs;
+  }
+  & p:not(.eyebrow) {
+    @apply mx-0 mt-2 mb-0 max-w-88 leading-technical-detail-leading;
+  }
+}
+@utility ui-back-top {
+  @apply cursor-pointer rounded-button border-0 bg-transparent bg-back-top-bg px-button-inset py-2;
+  @apply font-mono text-xs font-medium text-foreground back-top-box-shadow;
+  @apply transition-(--transition-property-back-top-transition) duration-420 ease-spring-snappy;
+  @apply back-top-fill-bottom back-top-fill-top back-top-sheen;
+  @variant hover {
+    @apply transform-(--motion-hover-lift) back-top-hover-shadow brightness-105;
+  }
+  @variant dark {
+    @apply back-top-fill-bottom-dark back-top-fill-top-dark back-top-sheen-dark;
+  }
+  @variant print {
+    @apply hidden!;
+  }
+  @variant active {
+    @variant touch {
+      @apply transform-(--motion-back-top-transform) back-top-hover-shadow brightness-105;
+    }
+  }
+}
+@utility ui-footer-base {
+  @apply mx-auto mt-10 flex w-full flex-wrap justify-between gap-3 border-t border-solid;
+  @apply border-border px-0 pt-4 font-work text-xs text-muted-foreground;
+} /* components/home/skills-section.tsx */
+@utility ui-skills-section {
+  @apply document-width block scroll-mt-16 border-t border-dotted border-(--document-rule) px-3;
+  @apply py-section-padding;
+  @variant max-document {
+    @apply px-4;
+  }
+}
+@utility ui-skills-layout {
+  @apply grid grid-cols-experience-section-grid-cols items-start gap-6;
+  @variant max-document {
+    @apply grid-cols-1 gap-4;
+  }
+}
+@utility ui-section-eyebrow-inline {
+  @apply m-0 mb-2.5 type-eyebrow;
+  @variant print {
+    @apply text-print-ink!;
+  }
+}
+@utility ui-skills-panel {
+  @apply flex flex-col gap-panel-gap rounded-sm border border-solid border-border bg-transparent;
+  @apply bg-none p-3;
+}
+@utility ui-skill-chip {
+  @apply inline-flex animate-chip-in items-center gap-2 rounded-sm border border-solid surface-pill;
+  @apply px-3 py-chip-inset text-sm font-medium whitespace-nowrap text-foreground;
+  @variant hover {
+    @apply transform-(--motion-hover-lift) border-interactive-border skill-chip-box-shadow;
+  }
+  @variant active {
+    @apply transform-(--motion-press) duration-100;
+  }
+  @variant active {
+    @variant touch {
+      @apply border-interactive-border skill-chip-box-shadow;
+    }
+  }
+  @variant touch {
+    &:active svg {
+      @apply text-(--skill-color);
+      @variant dark {
+        @apply text-(--skill-color-dark);
+      }
+    }
+  }
+  & svg {
+    @apply shrink-0 text-muted-foreground transition-(--transition-property-desktop-nav-transition);
+    @apply duration-200 ease-experience-ease;
+  }
+  @variant can-hover {
+    &:hover svg {
+      @apply text-(--skill-color);
+      @variant dark {
+        @apply text-(--skill-color-dark);
+      }
+    }
+  }
+}
+@utility ui-wide-skill-chip {
+  @apply inline-flex w-full animate-chip-in items-center justify-center gap-2 rounded-sm border;
+  @apply border-solid surface-pill px-2 py-1.5 text-sm font-medium whitespace-nowrap text-foreground;
+  @variant hover {
+    @apply transform-(--motion-hover-lift) border-interactive-border skill-chip-box-shadow;
+  }
+  @variant active {
+    @apply transform-(--motion-press) duration-100;
+  }
+  @variant active {
+    @variant touch {
+      @apply border-interactive-border skill-chip-box-shadow;
+    }
+  }
+  @variant touch {
+    &:active svg {
+      @apply text-(--skill-color);
+      @variant dark {
+        @apply text-(--skill-color-dark);
+      }
+    }
+  }
+  & svg {
+    @apply shrink-0 text-muted-foreground transition-(--transition-property-desktop-nav-transition);
+    @apply duration-200 ease-experience-ease;
+  }
+  @variant can-hover {
+    &:hover svg {
+      @apply text-(--skill-color);
+      @variant dark {
+        @apply text-(--skill-color-dark);
+      }
+    }
+  }
+}
+
+@utility ui-education-panel {
+  @apply mt-6 rounded-sm border border-solid border-border bg-card p-5;
+  & > .eyebrow {
+    @apply m-0 mb-3;
+  }
+}
+@utility ui-education-institute {
+  @apply m-0 text-base leading-relaxed font-medium text-foreground;
+}
+@utility ui-education-degree {
+  @apply mt-1 mb-0 text-sm leading-relaxed text-muted-foreground;
+}
+@utility ui-education-meta {
+  @apply mt-4 mb-0 flex flex-wrap gap-x-5 gap-y-1 text-sm leading-relaxed text-muted-foreground;
+}
+@utility ui-footer-summary {
+  @apply flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground;
+}
+@utility ui-footer-top {
+  @apply min-h-8 cursor-pointer border-0 bg-transparent p-0 text-sm text-muted-foreground;
+  @apply transition-colors duration-200;
+  @variant hover {
+    @apply text-foreground;
+  }
+}
+@utility ui-footer-details {
+  @apply mt-2 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-xs leading-relaxed text-muted-foreground;
+}
+@utility ui-footer-tools {
+  @apply flex flex-wrap items-center gap-x-4 gap-y-1;
+  & kbd {
+    @apply font-mono;
+  }
+}

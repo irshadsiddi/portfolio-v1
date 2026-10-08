@@ -1,0 +1,53 @@
+/* app/page.tsx */
+@utility ui-site-shell {
+  @apply relative min-h-screen overflow-visible;
+  &::before {
+    @apply pointer-events-none fixed inset-y-0 left-1/2 -z-1 w-site-shell-w;
+    @apply transform-(--motion-site-shell-transform) border-r border-l border-right-style-solid;
+    @apply border-left-style-solid site-shell-border-right-color site-shell-border-left-color;
+    @apply bg-background bg-none content-empty;
+  }
+  &::before {
+    @variant max-document {
+      @apply w-full border-0;
+    }
+  }
+}
+@utility ui-ambient {
+  @apply pointer-events-none fixed inset-0 hidden bg-transparent bg-ambient-bg;
+  @variant print {
+    @apply hidden!;
+  }
+}
+@utility ui-grain {
+  @apply pointer-events-none fixed inset-grain-inset z-70 hidden animate-grain-animate bg-grain-bg;
+  @apply opacity-4.5;
+  @variant print {
+    @apply hidden!;
+  }
+}
+@utility ui-frame-marks {
+  @apply hidden;
+  @variant print {
+    @apply hidden!;
+  }
+  & i {
+    @apply pointer-events-none fixed z-30 h-2.5 w-2.5 border-(--muted-foreground) opacity-50;
+  }
+  & i:nth-child(1) {
+    @apply top-2.5 left-2.5 border-t border-l border-top-style-solid border-left-style-solid;
+    @apply border-t-current border-l-current;
+  }
+  & i:nth-child(2) {
+    @apply top-2.5 right-2.5 border-t border-r border-top-style-solid border-right-style-solid;
+    @apply border-t-current border-r-current;
+  }
+  & i:nth-child(3) {
+    @apply bottom-2.5 left-2.5 border-b border-l border-bottom-style-solid border-left-style-solid;
+    @apply border-b-current border-l-current;
+  }
+  & i:nth-child(4) {
+    @apply right-2.5 bottom-2.5 border-r border-b border-right-style-solid border-bottom-style-solid;
+    @apply border-r-current border-b-current;
+  }
+}

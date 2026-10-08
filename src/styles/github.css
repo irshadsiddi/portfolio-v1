@@ -1,0 +1,265 @@
+/* app/open-source/page.tsx */
+@utility ui-eyebrow {
+  @apply type-eyebrow;
+  @variant print {
+    @apply text-print-ink!;
+  }
+}
+@utility ui-open-source-title {
+  @apply mt-2.5 mb-4 font-serif text-4xl leading-none font-normal;
+}
+@utility ui-open-source-toolbar {
+  & .oss-toolbar {
+    @apply mt-8;
+  }
+}
+@utility ui-oss-more {
+  @apply inline-flex cursor-pointer items-center gap-1 px-1 py-4 text-2xl font-medium;
+  @apply text-muted-foreground no-underline transition-colors duration-200 ease-spring-snappy;
+  @variant hover {
+    @apply text-foreground;
+  }
+  @variant print {
+    @apply hidden!;
+  }
+} /* components/heatmap.tsx */
+@utility ui-heat-cell {
+  @apply block aspect-square animate-heat-cell-animate rounded-heat-cell-rounded;
+  @apply bg-(--activity-cell-0) shadow-heat-cell-shadow;
+  @apply transition-(--transition-property-heat-cell-transition);
+  @apply duration-heat-cell-duration ease-heat-cell-ease;
+  @variant hover {
+    @apply z-70 scale-(--scale-heat-hover) brightness-115 outline-none;
+  }
+  @variant focus-visible {
+    @apply z-70 scale-(--scale-heat-hover) outline-2 outline-offset-2 outline-foreground;
+  }
+}
+@utility ui-heat-cell-empty {
+  @apply shadow-heat-cell-empty-shadow;
+  @variant dark {
+    @apply shadow-heat-cell-empty-dark-shadow;
+  }
+}
+@utility ui-heat-cell-active {
+  @apply bg-heat-cell-active-bg shadow-heat-cell-active-shadow;
+  @variant dark {
+    @apply shadow-heat-cell-active-dark-shadow;
+  }
+}
+@utility ui-contribution-panel {
+  @apply relative overflow-visible rounded-sm border border-border bg-contribution-panel-bg;
+  @apply px-section-gap pt-5 pb-6 text-(--activity-foreground) shadow-contribution-panel-shadow;
+  @variant dark {
+    @apply bg-contribution-panel-dark-bg shadow-contribution-panel-dark-shadow;
+  }
+}
+@utility ui-activity-eyebrow {
+  @apply shrink-0 type-eyebrow;
+  @variant print {
+    @apply text-print-ink!;
+  }
+}
+@utility ui-contribution-live {
+  @apply inline-flex items-center gap-2 font-work text-xs leading-normal font-medium tracking-widest;
+  @apply text-(--activity-muted) uppercase;
+}
+@utility ui-contribution-live-dot {
+  @apply size-1.5 animate-contribution-live-dot-animate rounded-full bg-(--activity-foreground);
+  @apply shadow-contribution-live-dot-shadow;
+}
+@utility ui-contribution-heading {
+  @apply m-0 font-serif text-3xl leading-contribution-heading-leading font-normal;
+  @apply tracking-contribution-heading-tracking;
+  @variant max-document {
+    @apply text-2xl leading-tight;
+  }
+}
+@utility ui-contribution-handle {
+  @apply inline-flex items-center gap-label-inset rounded-control border border-pill-border;
+  @apply bg-contribution-handle-bg px-label-gap py-chip-inset text-xs font-medium;
+  @apply text-foreground no-underline shadow-contribution-handle-shadow;
+  @apply transition-(--transition-property-contribution-handle-transition) duration-420;
+  @apply ease-spring-snappy;
+  @variant hover {
+    @apply -translate-y-0.5 scale-(--scale-hover) border-interactive-border;
+  }
+  @variant focus-visible {
+    @apply ring-2 ring-pcard-border outline-none;
+  }
+  @variant active {
+    @apply translate-y-px scale-(--scale-press) duration-100;
+  }
+  @variant dark {
+    @apply bg-contribution-handle-dark-bg shadow-pill-dark;
+  }
+}
+@utility ui-heatmap {
+  @apply min-w-0 pl-activity-offset;
+  @variant max-compact {
+    @apply pl-0;
+  }
+  @variant max-document {
+    @apply overflow-clip;
+  }
+}
+@utility ui-heatmap-months {
+  @apply relative mb-2 flex h-5 justify-start text-xs text-(--activity-muted);
+  @variant max-compact {
+    @apply text-xs;
+  }
+}
+@utility ui-heatmap-days {
+  @apply absolute top-0 right-heatmap-days-right grid h-full grid-rows-heatmap-days-grid-rows;
+  @apply items-center text-sm text-(--activity-muted);
+  @variant max-compact {
+    @apply hidden;
+  }
+}
+@utility ui-heat-cell-peak {
+  @variant dark {
+    @apply shadow-heat-cell-peak-dark-shadow;
+  }
+}
+@utility ui-heatmap-tooltip {
+  @apply pointer-events-none fixed z-2147483646 max-w-heatmap-tooltip-max-w -translate-x-1/2;
+  @apply -translate-y-full animate-heatmap-tooltip-animate rounded-button bg-heatmap-tooltip-bg px-3;
+  @apply py-2 font-heatmap-tooltip-font text-sm leading-none font-semibold whitespace-nowrap;
+  @apply text-background heatmap-tooltip-font-variant-numeric shadow-heatmap-tooltip-shadow;
+}
+@utility ui-contribution-foot {
+  @apply mt-section-gap flex items-center justify-between gap-8 border-t border-dashed border-border;
+  @apply pt-4;
+}
+@utility ui-contribution-summary {
+  @apply m-0 text-sm text-(--activity-muted) heatmap-tooltip-font-variant-numeric;
+}
+@utility ui-heatmap-legend {
+  @apply flex items-center gap-1.5 font-mono text-xs tracking-heatmap-legend-tracking;
+  @apply text-(--activity-muted) uppercase;
+  @variant print {
+    @apply hidden!;
+  }
+}
+@utility ui-heatmap-legend-cell {
+  @apply bg-(--activity-cell-0) shadow-heat-cell-empty-shadow;
+  @variant dark {
+    @apply shadow-heat-cell-empty-dark-shadow;
+  }
+} /* components/pr-browser.tsx */
+@utility ui-oss-sort {
+  @apply relative inline-flex items-center gap-2 text-sm text-muted-foreground;
+}
+@utility ui-oss-sort-trigger {
+  @apply inline-flex cursor-pointer items-center gap-2 rounded-control border-0;
+  @apply bg-oss-sort-trigger-bg px-3 py-2 pl-sort-inset font-family-inherit text-sm;
+  @apply line-height-inherit font-medium text-foreground shadow-sort;
+  @apply transition-(--transition-property-back-top-transition) duration-300;
+  @apply ease-oss-sort-trigger-ease;
+  @variant hover {
+    @apply -translate-y-px shadow-sort-hover brightness-104;
+  }
+  @variant focus-visible {
+    @apply outline-2 outline-offset-3 outline-foreground;
+  }
+}
+@utility ui-oss-sort-menu {
+  @apply pointer-events-none absolute top-oss-sort-menu-top right-0 z-40 m-0 min-w-full;
+  @apply origin-top-right -translate-y-1 scale-(--scale-menu-rest) list-none rounded-panel;
+  @apply bg-background p-compact-inset opacity-0 shadow-oss-sort-menu-shadow;
+  @apply transition-(--transition-property-oss-sort-menu-transition);
+  @apply duration-oss-sort-menu-duration ease-oss-sort-menu-ease;
+}
+@utility ui-sort-option {
+  @apply flex w-full cursor-pointer items-center justify-between gap-4 rounded-compact border-0;
+  @apply bg-transparent px-label-gap py-control-inset text-left font-family-inherit text-sm;
+  @apply line-height-inherit whitespace-nowrap text-muted-foreground;
+  @variant hover {
+    @apply bg-sort-option-bg text-foreground;
+  }
+}
+@utility ui-sort-option-selected {
+  @apply bg-sort-option-bg text-foreground;
+}
+@utility ui-oss-tabs {
+  @apply inline-flex gap-1 rounded-sm border border-border bg-oss-tabs-bg p-1;
+}
+@utility ui-oss-tab {
+  @apply cursor-pointer rounded-compact border-0 px-button-inset py-control-gap text-sm;
+  @apply font-medium transition-none;
+}
+@utility ui-pr-tab-inactive {
+  @apply bg-pr-tab-inactive-bg text-background shadow-pr-tab-inactive-shadow;
+  @variant hover {
+    @apply text-background;
+  }
+  @variant focus-visible {
+    @apply text-background;
+  }
+  @variant active {
+    @apply text-background brightness-95;
+  }
+}
+@utility ui-pr-tab-count {
+  @apply ml-small-inset font-mono text-xs;
+}
+@utility ui-oss-list-wrap {
+  @apply overflow-hidden transition-(--transition-property-oss-list-wrap-transition) duration-380;
+  @apply ease-oss-list-wrap-ease;
+}
+@utility ui-oss-empty {
+  @apply border-t border-border px-1 py-4 text-sm text-muted-foreground;
+}
+@utility ui-pr-list-item {
+  @apply animate-pr-list-item-animate;
+}
+@utility ui-oss-row {
+  @apply grid grid-cols-pr items-center gap-4 border-b border-border px-small-inset py-3 text-sm;
+  @apply text-inherit no-underline transition-(--transition-property-experience-transition);
+  @apply duration-200 ease-spring-snappy;
+  @variant first {
+    @apply border-t;
+  }
+  @variant hover {
+    @apply bg-oss-row-bg;
+  }
+  @variant print {
+    @apply break-inside-avoid;
+  }
+  @variant max-compact {
+    @apply grid-cols-pr-mobile gap-y-compact-inset;
+  }
+}
+@utility ui-oss-title {
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  @variant can-hover {
+    @variant group-hover {
+      @apply underline underline-offset-3;
+    }
+  }
+}
+@utility ui-oss-repo {
+  @apply max-w-60 overflow-hidden font-mono text-xs text-ellipsis whitespace-nowrap;
+  @apply text-muted-foreground;
+  @variant print {
+    @apply text-print-ink!;
+  }
+  @variant max-compact {
+    @apply hidden;
+  }
+}
+@utility ui-oss-stats {
+  @apply font-mono text-xs whitespace-nowrap;
+  @variant print {
+    @apply text-print-ink!;
+  }
+}
+@utility ui-oss-date {
+  @apply text-sm whitespace-nowrap text-muted-foreground;
+  @variant print {
+    @apply text-print-ink!;
+  }
+  @variant max-compact {
+    @apply hidden;
+  }
+}

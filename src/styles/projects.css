@@ -1,0 +1,169 @@
+/* app/projects/[slug]/page.tsx */
+@utility ui-project-detail-title {
+  @apply mt-2 mb-4 font-serif text-4xl leading-none font-normal;
+}
+@utility ui-preview-filename {
+  @apply ml-auto font-mono text-xs text-muted-foreground;
+}
+@utility ui-project-body {
+  @apply mt-12 grid grid-cols-project-body-grid-cols gap-12;
+  @variant max-document {
+    @apply grid-cols-1 gap-8;
+  }
+}
+@utility ui-project-detail-tag {
+  @apply rounded-sm border border-pill-border bg-pill px-1.5 py-0.5 font-sans text-xs leading-none;
+  @apply font-medium text-foreground not-italic shadow-pill;
+  @variant dark {
+    @apply bg-pill-dark shadow-pill-dark;
+  }
+} /* components/project-card.tsx */
+@utility ui-pf-node {
+  @apply absolute z-1 rounded-panel border border-border bg-card px-label-gap py-label-inset;
+  @apply font-mono text-xs;
+}
+@utility ui-project-action {
+  @apply relative z-3 inline-flex items-center gap-compact-inset rounded-compact border surface-pill;
+  @apply px-control-inset py-1 text-sm font-medium text-foreground no-underline;
+  @variant active {
+    @apply transform-(--motion-press) brightness-96 duration-100;
+  }
+  @variant can-hover {
+    @variant hover {
+      @apply transform-(--motion-hover-lift) border-interactive-border;
+    }
+  }
+  @variant touch {
+    @variant active {
+      @apply border-interactive-border;
+    }
+  }
+}
+@utility ui-project-tag {
+  @apply rounded-compact border border-pill-border bg-pill px-tag-padding py-tag-inset font-work;
+  @apply text-sm leading-browser font-medium text-foreground not-italic shadow-pill;
+  @apply transition-(--transition-property-project-tag-transition);
+  @apply duration-project-tag-duration ease-spring-snappy;
+  @variant dark {
+    @apply bg-pill-dark shadow-pill-dark;
+  }
+  @variant can-hover {
+    @variant group-hover {
+      @apply border-project-tag-border shadow-project-tag-shadow;
+    }
+  }
+}
+@utility ui-pframe {
+  @apply mx-card-inset mt-card-inset mb-0 overflow-hidden rounded-compact border border-border;
+  @apply bg-background;
+}
+@utility ui-pframe-bar {
+  @apply flex items-center gap-compact-inset border-b border-border bg-card px-menu-inset py-2;
+}
+@utility ui-preview-window-dot {
+  @apply size-preview-dot rounded-full bg-preview-window-dot-bg;
+}
+@utility ui-preview-app-name {
+  @apply ml-label-gap font-mono text-xs text-muted-foreground;
+}
+@utility ui-preview-canvas {
+  @apply relative h-auto min-h-38 bg-preview-canvas-bg;
+  @apply bg-size-(--background-size-preview-canvas-bg-size) transition-transform duration-520;
+  @apply ease-spring-gentle will-change-(--will-change-preview-canvas-will-change);
+}
+@utility ui-preview-flow-line {
+  @apply animate-preview-flow-line-animate fill-none stroke-interactive-border;
+  @apply stroke-preview-flow-line-stroke preview-flow-line-stroke-dasharray;
+}
+@utility ui-pf-bars {
+  @apply absolute inset-pf-bars-inset flex items-end gap-pf-bars-gap;
+}
+@utility ui-preview-chart-bar {
+  @apply flex-1 origin-bottom animate-preview-chart-bar-animate rounded-chart-bar;
+  @apply bg-preview-chart-bar-bg;
+}
+@utility ui-pf-rows {
+  @apply m-0 grid list-none gap-control-gap px-feed-inset py-menu-inset font-mono text-xs;
+}
+@utility ui-preview-job-row {
+  @apply flex items-center gap-label-gap rounded-panel border border-border bg-card px-2;
+  @apply py-compact-inset;
+}
+@utility ui-preview-job-dot {
+  @apply size-preview-dot rounded-full;
+}
+@utility ui-preview-job-dot-running {
+  @apply animate-preview-job-dot-running-animate;
+}
+@utility ui-pcard {
+  @apply relative isolate grid grid-cols-1 gap-0 overflow-hidden rounded-pcard-rounded border;
+  @apply border-border bg-background p-0 text-inherit no-underline;
+  @apply transition-(--transition-property-pcard-transition) duration-520 ease-spring-gentle;
+  @variant before {
+    @apply pointer-events-none absolute inset-0 z-2 rounded-inherited bg-project-edge pcard-mask-image;
+    @apply mask-exclude pcard-mask-clip p-px opacity-0 transition-opacity duration-300;
+    @apply ease-experience-ease will-change-(--will-change-preview-canvas-will-change);
+  }
+  @variant after {
+    @apply pointer-events-none absolute inset-0 -z-1 bg-project-spotlight opacity-0 transition-opacity;
+    @apply duration-300 ease-experience-ease will-change-(--will-change-preview-canvas-will-change);
+  }
+  @variant hover {
+    @apply transform-(--motion-card-hover) border-pcard-border bg-card text-foreground;
+  }
+  @variant print {
+    @apply break-inside-avoid bg-transparent! shadow-none!;
+  }
+  @variant can-hover {
+    @variant hover {
+      @variant before {
+        @apply opacity-100;
+      }
+    }
+  }
+  @variant can-hover {
+    @variant hover {
+      @variant after {
+        @apply opacity-100;
+      }
+    }
+  }
+  @variant touch {
+    @variant active {
+      @apply transform-(--motion-card-touch) border-pcard-border bg-card;
+    }
+  }
+}
+@utility ui-pcard-main {
+  @apply px-feed-inset pt-button-inset pb-4;
+}
+@utility ui-pcard-meta {
+  @apply mb-label-gap flex flex-wrap gap-label-gap font-mono text-sm tracking-wide;
+  @apply text-muted-foreground uppercase;
+}
+@utility ui-project-card-title {
+  @apply mx-0 mt-0 mb-label-inset font-serif text-2xl;
+  @apply leading-project-card-title-leading font-normal;
+}
+@utility ui-project-card-description {
+  @apply mx-0 mt-0 mb-button-inset text-sm leading-project-card-description-leading;
+  @apply text-muted-foreground;
+}
+@utility ui-pcard-tags {
+  @apply flex flex-wrap gap-compact-inset;
+}
+@utility ui-pcard-actions {
+  @apply mt-button-inset flex flex-wrap items-center gap-2;
+}
+@utility ui-pcard-more {
+  @variant max-small {
+    @apply translate-x-0 opacity-100;
+  }
+  @apply ml-chart-inset inline-flex translate-x-project-arrow-hidden items-center gap-1 font-mono;
+  @apply text-sm text-muted-foreground opacity-0 transition-all duration-300 ease-spring-snappy;
+  @variant can-hover {
+    @variant group-hover {
+      @apply translate-x-project-arrow-visible text-foreground opacity-100;
+    }
+  }
+}

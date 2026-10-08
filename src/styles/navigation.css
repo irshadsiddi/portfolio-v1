@@ -1,0 +1,153 @@
+/* components/header.tsx */
+@utility ui-topbar {
+  @apply grid min-h-header-height grid-cols-navigation items-center gap-topbar-gap rounded-none;
+  @apply border-t-0 border-r-0 border-b-topbar-border-b border-l-0 border-dotted border-border;
+  @apply bg-topbar-bg bg-none px-3 py-0 shadow-none topbar-backdrop-filter;
+  @variant max-navigation {
+    @apply grid-cols-navigation-mobile;
+  }
+}
+@utility ui-wordmark {
+  @apply justify-self-start;
+  @apply cursor-pointer border-0 bg-transparent bg-none font-serif text-2xl tracking-normal;
+  @apply text-foreground;
+  & span {
+    @apply text-foreground;
+  }
+}
+@utility ui-desktop-nav {
+  @apply flex min-w-0 items-center justify-end gap-5;
+  @variant max-navigation {
+    @apply hidden;
+  }
+  & button {
+    @apply relative cursor-pointer border-0 bg-transparent bg-none px-0 py-control-gap text-sm;
+    @apply font-medium text-muted-foreground transition-(--transition-property-desktop-nav-transition);
+    @apply duration-200 ease-spring-snappy;
+  }
+  & button.is-active {
+    @apply text-foreground;
+  }
+  & button.is-active::after {
+    @apply origin-left transform-(--motion-underline-visible);
+  }
+  & button::after {
+    @apply absolute right-0 bottom-0 left-0 h-px origin-(--transform-origin-navigation);
+    @apply transform-(--motion-underline-hidden) bg-foreground bg-none;
+    @apply transition-(--transition-property-desktop-nav-transition-2) duration-350;
+    @apply ease-desktop-nav-ease content-empty;
+  }
+  & button:hover {
+    @apply text-foreground;
+  }
+  @variant can-hover {
+    & button:hover::after {
+      @apply origin-left transform-(--motion-underline-visible);
+    }
+  }
+}
+@utility ui-nav-tools {
+  @apply flex shrink-0 items-center gap-control-gap;
+}
+@utility ui-search-trigger {
+  @variant max-small {
+    @apply min-h-11 min-w-11;
+  }
+  @apply flex min-h-search-height cursor-pointer items-center gap-control-inset rounded-button border;
+  @apply border-dashed border-border bg-transparent bg-none px-panel-gap py-0 text-sm;
+  @apply font-medium text-muted-foreground shadow-none;
+  @apply transition-(--transition-property-search-trigger-transition) duration-420 ease-spring-snappy;
+  @variant hover {
+    @apply transform-(--motion-hover-lift) border-(--muted-foreground) text-foreground;
+    @apply search-trigger-box-shadow;
+  }
+  @variant active {
+    @apply transform-(--motion-press) duration-100;
+  }
+  @variant max-compact {
+    @apply w-search-width justify-center p-0;
+  }
+  @variant active {
+    @variant touch {
+      @apply border-(--muted-foreground) text-foreground search-trigger-box-shadow;
+    }
+  }
+  & kbd {
+    @apply ml-compact-inset inline-flex items-center gap-shortcut-gap font-mono text-xs;
+  }
+  & kbd {
+    @variant max-compact {
+      @apply hidden;
+    }
+  }
+  & span {
+    @variant max-compact {
+      @apply hidden;
+    }
+  }
+}
+@utility ui-mobile-nav {
+  @apply hidden origin-top-right animate-mobile-nav-animate;
+  @variant print {
+    @apply hidden!;
+  }
+  @variant max-compact {
+    @apply grid-cols-1;
+  }
+  @variant max-navigation {
+    @apply absolute top-mobile-nav-top right-0 left-0 grid w-full rounded-dialog border border-solid;
+    @apply border-(--glass-border) bg-background bg-none p-menu-inset mobile-nav-box-shadow;
+  }
+  @variant compact-to-navigation {
+    @apply grid-cols-2;
+  }
+  & > p {
+    @variant max-navigation {
+      @apply col-span-full m-0 px-control-inset pt-1 pb-panel-gap font-work text-xs;
+      @apply leading-mobile-nav-leading font-medium tracking-mobile-nav-tracking text-muted-foreground;
+      @apply uppercase not-italic font-stretch-normal font-variant-normal;
+    }
+  }
+  & button {
+    @apply cursor-pointer border-0 bg-transparent bg-none px-0 py-control-gap text-sm;
+    @apply text-muted-foreground transition-(--transition-property-desktop-nav-transition) duration-200;
+    @apply ease-spring-snappy;
+  }
+  & button {
+    @variant max-navigation {
+      @apply grid min-w-0 grid-cols-mobile-nav-grid-cols items-baseline gap-control-gap border-t;
+      @apply border-r-0 border-b-0 border-l-0 border-top-style-solid border-right-style-none;
+      @apply border-bottom-style-none border-left-style-none mobile-nav-border-top-color border-r-current;
+      @apply border-b-current border-l-current px-control-inset py-panel-gap text-left;
+    }
+  }
+  & button span {
+    @variant max-navigation {
+      @apply font-mono text-xs text-muted-foreground;
+    }
+  }
+  & button strong {
+    @variant max-navigation {
+      @apply min-w-0 overflow-hidden font-work text-sm font-medium text-ellipsis whitespace-nowrap;
+      @apply text-inherit;
+    }
+  }
+  & button.is-active {
+    @variant max-navigation {
+      @apply text-foreground;
+    }
+  }
+  & button:hover {
+    @apply text-foreground;
+  }
+  & button:nth-of-type(even) {
+    @variant max-compact {
+      @apply border-l-0 border-left-style-none border-l-current pl-control-inset;
+    }
+  }
+  & button:nth-of-type(even) {
+    @variant compact-to-navigation {
+      @apply border-l border-left-style-solid site-shell-border-left-color pl-3;
+    }
+  }
+}
