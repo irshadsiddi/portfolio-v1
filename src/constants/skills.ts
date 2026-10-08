@@ -1,0 +1,78 @@
+import { Database, Brain, Code, Layers } from "lucide-react";
+import {
+  SiCplusplus,
+  SiDocker,
+  SiExpress,
+  SiFigma,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiLinux,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedis,
+  SiTypescript,
+  SiFlutter,
+  SiFirebase,
+  SiFastapi,
+  SiDart,
+  SiSupabase,
+  SiMysql,
+  SiSqlite,
+  SiNginx,
+  SiFramer,
+  SiStreamlit,
+} from "react-icons/si";
+
+export type Skill = {
+  name: string;
+  hoverColor: string;
+  darkHoverColor?: string;
+  Icon: React.ComponentType<{ size?: number; className?: string }>;
+};
+export const skills: Skill[] = [
+  { name: "C++", Icon: SiCplusplus, hoverColor: "#659AD2" },
+  { name: "C", Icon: Code, hoverColor: "#659AD2" },
+  { name: "JavaScript", Icon: SiJavascript, hoverColor: "#E5C200", darkHoverColor: "#F7DF1E" },
+  { name: "TypeScript", Icon: SiTypescript, hoverColor: "#3178C6" },
+  { name: "Python", Icon: SiPython, hoverColor: "#3776AB", darkHoverColor: "#FFD343" },
+  { name: "Dart", Icon: SiDart, hoverColor: "#0175C2" },
+  { name: "React", Icon: SiReact, hoverColor: "#61DAFB" },
+  { name: "Next.js", Icon: SiNextdotjs, hoverColor: "var(--foreground)" },
+  { name: "Flutter", Icon: SiFlutter, hoverColor: "#54C5F8" },
+  { name: "Node.js", Icon: SiNodedotjs, hoverColor: "#5FA04E" },
+  { name: "Express", Icon: SiExpress, hoverColor: "var(--foreground)" },
+  { name: "FastAPI", Icon: SiFastapi, hoverColor: "#009688" },
+  { name: "REST APIs", Icon: Code, hoverColor: "var(--foreground)" },
+  { name: "Firebase", Icon: SiFirebase, hoverColor: "#F5A623" },
+  { name: "Supabase", Icon: SiSupabase, hoverColor: "#3ECF8E" },
+  { name: "PostgreSQL", Icon: SiPostgresql, hoverColor: "#4169E1", darkHoverColor: "#6B9ED5" },
+  { name: "MySQL", Icon: SiMysql, hoverColor: "#4479A1" },
+  { name: "SQLite", Icon: SiSqlite, hoverColor: "#4EA1DB" },
+  { name: "SQL", Icon: Database, hoverColor: "#4EA1DB" },
+  { name: "ChromaDB", Icon: Database, hoverColor: "var(--foreground)" },
+  { name: "Redis", Icon: SiRedis, hoverColor: "#FF4438" },
+  { name: "RAG", Icon: Brain, hoverColor: "var(--foreground)" },
+  { name: "Transformers", Icon: Brain, hoverColor: "var(--foreground)" },
+  { name: "Sentence Transformers", Icon: Brain, hoverColor: "var(--foreground)" },
+  { name: "ML Fundamentals", Icon: Brain, hoverColor: "var(--foreground)" },
+  { name: "Docker", Icon: SiDocker, hoverColor: "#2496ED" },
+  { name: "Docker Compose", Icon: Layers, hoverColor: "#2496ED" },
+  { name: "Nginx", Icon: SiNginx, hoverColor: "#009639" },
+  { name: "GitHub Actions", Icon: SiGithub, hoverColor: "var(--foreground)" },
+  { name: "Framer Motion", Icon: SiFramer, hoverColor: "#BB4BFF" },
+  { name: "Streamlit", Icon: SiStreamlit, hoverColor: "#FF4B4B" },
+  { name: "Git", Icon: SiGit, hoverColor: "#F05032" },
+  { name: "GitHub", Icon: SiGithub, hoverColor: "var(--foreground)" },
+  { name: "VS Code", Icon: Code, hoverColor: "#007ACC" },
+  { name: "Figma", Icon: SiFigma, hoverColor: "#F24E1E" },
+];
+export const wideSkill: Skill = {
+  name: "Linux",
+  Icon: SiLinux,
+  hoverColor: "#D6A900",
+  darkHoverColor: "#FCC624",
+};
