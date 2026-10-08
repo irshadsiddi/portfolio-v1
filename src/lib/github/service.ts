@@ -17,12 +17,15 @@ export async function fetchGithubData(): Promise<GithubData> {
 
   try {
     const [searchRes, contribRes] = await fetchGithubResponses();
-    const prs = searchRes.ok ? await parsePullRequests(searchRes) : [];
+    const prs =
+      searchRes.status === "fulfilled" && searchRes.value.ok
+        ? await parsePullRequests(searchRes.value)
+        : [];
 
     let weeks: HeatCell[][] = [];
     let total = 0;
-    if (contribRes.ok) {
-      ({ weeks, total } = parseContributions(await contribRes.text()));
+    if (contribRes.status === "fulfilled" && contribRes.value.ok) {
+      ({ weeks, total } = parseContributions(await contribRes.value.text()));
     }
 
     const data: GithubData = {
