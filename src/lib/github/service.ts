@@ -1,3 +1,4 @@
+import { fetchContributionCalendar } from "./contributions";
 import { parseContributions } from "./parsers";
 import type { GithubData, HeatCell } from "./types";
 import { fetchGithubResponses } from "./client";
@@ -16,7 +17,10 @@ export async function fetchGithubData(): Promise<GithubData> {
   };
 
   try {
-    const [searchRes, contribRes] = await fetchGithubResponses();
+    const [[searchRes, contribRes], calendar] = await Promise.all([
+      fetchGithubResponses(),
+      fetchContributionCalendar().catch(() => null),
+    ]);
     const prs =
       searchRes.status === "fulfilled" && searchRes.value.ok
         ? await parsePullRequests(searchRes.value)
@@ -27,6 +31,8 @@ export async function fetchGithubData(): Promise<GithubData> {
     if (contribRes.status === "fulfilled" && contribRes.value.ok) {
       ({ weeks, total } = parseContributions(await contribRes.value.text()));
     }
+
+    if (calendar) ({ weeks, total } = calendar);
 
     const data: GithubData = {
       ok: prs.length > 0 || weeks.length > 0,
