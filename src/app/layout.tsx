@@ -1,29 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "../styles/global.css";
-import { SITE } from "@/constants/site";
+import { ROOT_METADATA } from "@/constants/seo";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Siddi Mohammad Irshad",
-    template: "%s — Siddi Mohammad Irshad",
-  },
-  description: "Full-stack and agentic AI engineer.",
-  authors: [{ name: "Siddi Mohammad Irshad" }],
-  openGraph: {
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  icons: {
-    icon: [
-      {
-        url: SITE.profileImage,
-        type: "image/png",
-      },
-    ],
-  },
-};
+export const metadata: Metadata = ROOT_METADATA;
 
 export const viewport: Viewport = {
   themeColor: "#151515",
