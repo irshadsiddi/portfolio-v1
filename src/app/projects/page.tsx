@@ -23,21 +23,18 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="project-page page-width document-width px-3 pt-24 pb-20 max-document:px-4">
-      <Link
-        href="/"
-        className="project-back inline-flex items-center gap-1.5 font-mono text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
-      >
+    <main className="project-page page-width ui-detail-page">
+      <Link href="/" className="project-back ui-page-back">
         <ArrowLeft size={15} />
         Back home
       </Link>
 
-      <header className="project-head mt-12 mb-10">
+      <header className="project-head ui-page-head">
         <span className="eyebrow ui-eyebrow">Projects</span>
 
         <h1 className="ui-open-source-title">All projects</h1>
 
-        <p className="max-w-max text-base leading-relaxed text-muted-foreground">{description}</p>
+        <p className="ui-page-description">{description}</p>
       </header>
 
       <div className="pcard-list grid grid-cols-2 gap-3 max-document:grid-cols-1">

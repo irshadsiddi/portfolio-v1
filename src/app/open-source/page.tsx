@@ -23,21 +23,18 @@ export const metadata: Metadata = {
 
 export default function OpenSourcePage() {
   return (
-    <main className="project-page page-width oss-page document-width px-3 pt-24 pb-20 max-document:px-4">
-      <Link
-        href="/#opensource"
-        className="project-back inline-flex items-center gap-1.5 font-mono text-2xl text-muted-foreground no-underline transition-colors hover:text-foreground"
-      >
+    <main className="project-page page-width ui-detail-page">
+      <Link href="/#opensource" className="project-back ui-page-back">
         <ArrowLeft size={15} />
         Back home
       </Link>
 
-      <header className="project-head mt-12 mb-10">
+      <header className="project-head ui-page-head">
         <span className="eyebrow ui-eyebrow">Open Source</span>
 
         <h1 className="ui-open-source-title">All pull requests</h1>
 
-        <p className="max-w-152 text-2xl leading-2 text-muted-foreground">{description}</p>
+        <p className="ui-page-description">{description}</p>
       </header>
 
       <div className="ui-open-source-toolbar">

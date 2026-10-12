@@ -53,18 +53,15 @@ export default async function ProjectPage({ params }: PageProps) {
   const next = projects[(index + 1) % projects.length]!;
 
   return (
-    <main className="project-page page-width document-width px-3 pt-24 pb-20 max-small:pt-10 max-small:pb-12 max-document:px-4">
+    <main className="project-page page-width ui-detail-page">
       {/* Back */}
-      <Link
-        href="/"
-        className="project-back inline-flex items-center gap-2 font-mono text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
-      >
+      <Link href="/" className="project-back ui-page-back">
         <ArrowLeft size={15} />
         All projects
       </Link>
 
       {/* Header */}
-      <header className="project-head mt-12 mb-10">
+      <header className="project-head ui-page-head">
         <span className="eyebrow ui-eyebrow">
           {project.number} · {project.metric}
           {project.year ? ` · ${project.year}` : ""}
@@ -72,9 +69,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
         <h1 className="ui-project-detail-title">{project.title}</h1>
 
-        <p className="max-w-152 text-lg leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
+        <p className="ui-page-description">{project.description}</p>
       </header>
 
       {/* Terminal Preview */}

@@ -18,7 +18,7 @@ export function OpenSourceSection() {
             Contributions I've made to open source projects.
           </p>
         </div>
-        <div className="oss-main">
+        <div className="oss-main min-w-0">
           <article className="mb-6 border-b border-border pb-6">
             <h3 className="mt-0 font-serif text-2xl font-normal">{openSourceContribution.title}</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">

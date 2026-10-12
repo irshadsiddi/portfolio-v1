@@ -115,9 +115,9 @@ export function Heatmap() {
       className="activity-section page-width document-width scroll-mt-16 border-t border-dotted border-(--document-rule) px-3 py-section-padding max-document:px-4"
     >
       <div className="contribution-panel ui-contribution-panel">
-        <div className="contribution-head mb-5 flex items-end justify-between gap-8">
+        <div className="contribution-head mb-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
           <div className="contribution-title flex flex-col gap-2">
-            <div className="contribution-kicker flex min-w-0 items-center gap-3">
+            <div className="contribution-kicker flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
               <span className="eyebrow ui-activity-eyebrow">Activity</span>
 
               <span className="contribution-live ui-contribution-live">

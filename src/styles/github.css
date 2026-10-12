@@ -6,7 +6,7 @@
   }
 }
 @utility ui-open-source-title {
-  @apply mt-2.5 mb-4 font-serif text-4xl leading-none font-normal;
+  @apply mt-2.5 mb-4 font-serif text-4xl leading-tight font-normal;
 }
 @utility ui-open-source-toolbar {
   & .oss-toolbar {
@@ -14,7 +14,7 @@
   }
 }
 @utility ui-oss-more {
-  @apply inline-flex cursor-pointer items-center gap-1 px-1 py-4 text-2xl font-medium;
+  @apply inline-flex cursor-pointer items-center gap-1 px-0 py-4 text-sm leading-normal font-medium;
   @apply text-muted-foreground no-underline transition-colors duration-200 ease-spring-snappy;
   @variant hover {
     @apply text-foreground;
@@ -129,7 +129,10 @@
 }
 @utility ui-contribution-foot {
   @apply mt-section-gap flex items-center justify-between gap-8 border-t border-dashed border-border;
-  @apply pt-4;
+  @apply flex-wrap pt-4;
+  @variant max-phone {
+    @apply flex-col items-start gap-3;
+  }
 }
 @utility ui-contribution-summary {
   @apply m-0 text-sm text-(--activity-muted) heatmap-tooltip-font-variant-numeric;
@@ -182,7 +185,7 @@
   @apply bg-sort-option-bg text-foreground;
 }
 @utility ui-oss-tabs {
-  @apply inline-flex gap-1 rounded-sm border border-border bg-oss-tabs-bg p-1;
+  @apply inline-flex max-w-full gap-1 rounded-sm border border-border bg-oss-tabs-bg p-1;
 }
 @utility ui-oss-tab {
   @apply cursor-pointer rounded-compact border-0 px-button-inset py-control-gap text-sm;
@@ -231,7 +234,7 @@
   }
 }
 @utility ui-oss-title {
-  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  @apply min-w-0 overflow-hidden text-ellipsis whitespace-nowrap;
   @variant can-hover {
     @variant group-hover {
       @apply underline underline-offset-3;

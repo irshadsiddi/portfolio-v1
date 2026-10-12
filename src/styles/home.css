@@ -256,7 +256,7 @@
   @apply not-italic font-stretch-normal font-variant-normal;
 }
 @utility ui-profile-now {
-  @apply flex max-w-56 items-center gap-card-inset text-sm leading-relaxed text-muted-foreground;
+  @apply flex max-w-56 items-start gap-card-inset text-sm leading-relaxed text-muted-foreground;
   @variant max-document {
     @apply col-span-full max-w-none;
   }
@@ -265,7 +265,7 @@
   }
 }
 @utility ui-eq {
-  @apply inline-flex h-3 items-end gap-0.5;
+  @apply mt-1 inline-flex h-3 shrink-0 items-end gap-0.5;
   & i {
     @apply w-0.5 animate-eq-animate rounded-eq-rounded bg-foreground bg-none;
   }
