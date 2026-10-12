@@ -146,68 +146,65 @@ export function Heatmap() {
         </div>
 
         <div className="heatmap ui-heatmap">
-          <div className="heatmap-months ui-heatmap-months" aria-hidden="true">
-            {monthLabels.map((month, i) => (
-              <span
-                key={i}
-                style={{ left: `${month.left}%` }}
-                className={`absolute top-0 whitespace-nowrap ${
-                  i % 2 === 1 ? "max-compact:hidden" : ""
-                }`}
-              >
-                {month.name}
-              </span>
-            ))}
-          </div>
-
-          <div className="heatmap-body relative">
-            <div className="heatmap-days ui-heatmap-days" aria-hidden="true">
-              <span className="row-start-2">Mon</span>
-              <span className="row-start-4">Wed</span>
-              <span className="row-start-6">Fri</span>
+          <div className="ui-heatmap-canvas">
+            <div className="heatmap-months ui-heatmap-months" aria-hidden="true">
+              {monthLabels.map((month, i) => (
+                <span
+                  key={i}
+                  style={{ left: `${month.left}%` }}
+                  className="absolute top-0 whitespace-nowrap"
+                >
+                  {month.name}
+                </span>
+              ))}
             </div>
 
-            <div className="heatmap-grid flex gap-1 max-compact:gap-px">
-              {weeks.map((week, w) => (
-                <div
-                  key={w}
-                  className="heatmap-week relative grid flex-1 gap-1 hover:z-80 max-compact:gap-px"
-                >
-                  {week.map((cell, d) => {
-                    if (!cell.date) {
-                      return <i key={d} className="invisible aspect-square" />;
-                    }
+            <div className="heatmap-body relative">
+              <div className="heatmap-days ui-heatmap-days" aria-hidden="true">
+                <span className="row-start-2">Mon</span>
+                <span className="row-start-4">Wed</span>
+                <span className="row-start-6">Fri</span>
+              </div>
 
-                    const n = cell.count ?? 0;
-                    const [y, mo, da] = cell.date.split("-");
+              <div className="heatmap-grid flex gap-1">
+                {weeks.map((week, w) => (
+                  <div key={w} className="heatmap-week relative grid flex-1 gap-1 hover:z-80">
+                    {week.map((cell, d) => {
+                      if (!cell.date) {
+                        return <i key={d} className="invisible aspect-square" />;
+                      }
 
-                    const label = `${
-                      n > 0 ? `${n} contribution${n === 1 ? "" : "s"} on` : "No contributions on"
-                    } ${MONTH_NAMES[Number(mo) - 1] ?? ""} ${Number(da)}, ${y}`;
+                      const n = cell.count ?? 0;
+                      const [y, mo, da] = cell.date.split("-");
 
-                    const isActive = cell.level > 0;
+                      const label = `${
+                        n > 0 ? `${n} contribution${n === 1 ? "" : "s"} on` : "No contributions on"
+                      } ${MONTH_NAMES[Number(mo) - 1] ?? ""} ${Number(da)}, ${y}`;
 
-                    return (
-                      <i
-                        key={d}
-                        data-l={cell.level}
-                        tabIndex={0}
-                        aria-label={label}
-                        className={`${heatCellClass} ${heatCellLevelClass(cell.level)} ${
-                          isActive ? activeHeatCellClass : ""
-                        } ${cell.level === 4 ? "ui-heat-cell-peak" : ""}`}
-                        style={{
-                          animationDelay: `${Math.min(w * 12, 620)}ms`,
-                        }}
-                        onMouseEnter={(e) => showTooltip(e.currentTarget, label)}
-                        onMouseLeave={() => setTooltip(null)}
-                        onFocus={(e) => showTooltip(e.currentTarget, label)}
-                        onBlur={() => setTooltip(null)}
-                      />
-                    );
-                  })}
-                </div>
-              ))}
+                      const isActive = cell.level > 0;
+
+                      return (
+                        <i
+                          key={d}
+                          data-l={cell.level}
+                          tabIndex={0}
+                          aria-label={label}
+                          className={`${heatCellClass} ${heatCellLevelClass(cell.level)} ${
+                            isActive ? activeHeatCellClass : ""
+                          } ${cell.level === 4 ? "ui-heat-cell-peak" : ""}`}
+                          style={{
+                            animationDelay: `${Math.min(w * 12, 620)}ms`,
+                          }}
+                          onMouseEnter={(e) => showTooltip(e.currentTarget, label)}
+                          onMouseLeave={() => setTooltip(null)}
+                          onFocus={(e) => showTooltip(e.currentTarget, label)}
+                          onBlur={() => setTooltip(null)}
+                        />
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

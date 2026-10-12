@@ -95,12 +95,15 @@
   }
 }
 @utility ui-heatmap {
-  @apply min-w-0 pl-activity-offset;
-  @variant max-compact {
-    @apply pl-0;
-  }
+  @apply min-w-0;
   @variant max-document {
-    @apply overflow-clip;
+    @apply overflow-x-auto overscroll-x-contain pb-3;
+  }
+}
+@utility ui-heatmap-canvas {
+  @apply pl-activity-offset;
+  @variant max-document {
+    @apply min-w-[48rem];
   }
 }
 @utility ui-heatmap-months {
@@ -112,9 +115,6 @@
 @utility ui-heatmap-days {
   @apply absolute top-0 right-heatmap-days-right grid h-full grid-rows-heatmap-days-grid-rows;
   @apply items-center text-sm text-(--activity-muted);
-  @variant max-compact {
-    @apply hidden;
-  }
 }
 @utility ui-heat-cell-peak {
   @variant dark {
