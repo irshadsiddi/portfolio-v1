@@ -74,7 +74,7 @@ export function HeroSection() {
               {copied ? "Copied" : "Mail"}
             </button>
             <a href={RESUME_LINKS.preview} target="_blank" rel="noreferrer">
-              <FileText size={14} /> View résumé <ArrowUpRight size={11} />
+              <FileText size={14} /> View resume <ArrowUpRight size={11} />
             </a>
           </div>
         </div>

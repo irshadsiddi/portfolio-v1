@@ -1,6 +1,6 @@
 import type { OssPr, PrStatus } from "./types";
 import { fmtDate } from "./format";
-import { githubHeaders as headers } from "./client";
+import { getGithubHeaders } from "./client";
 export async function parsePullRequests(response: Response): Promise<OssPr[]> {
   const json = (await response.json()) as {
     items?: {
@@ -35,7 +35,11 @@ export async function parsePullRequests(response: Response): Promise<OssPr[]> {
     items.slice(0, 30).map(async (item, i) => {
       if (!item.pull_request?.url) return;
       try {
-        const res = await fetch(item.pull_request.url, { headers });
+        const res = await fetch(item.pull_request.url, {
+          headers: getGithubHeaders(),
+          cache: "no-store",
+          signal: AbortSignal.timeout(10_000),
+        });
         if (!res.ok) return;
         const detail = (await res.json()) as { additions?: number; deletions?: number };
         if (!prs[i]) return;

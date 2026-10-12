@@ -1,3 +1,5 @@
+export const GITHUB_REFRESH_MS = 60_000;
+
 export const GITHUB_USER = "irshadsiddi";
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USER}`;
 
