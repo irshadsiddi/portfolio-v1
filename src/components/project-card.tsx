@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { ArrowUpRight, Github } from "lucide-react";
 
 import { projects, type Project } from "@/constants/projects";
@@ -11,7 +11,11 @@ const projectTagClass = "ui-project-tag";
 export function ProjectFrame({ slug }: { slug: string }) {
   const project = projects.find((item) => item.slug === slug);
   return (
-    <div className="pframe ui-pframe" aria-hidden="true">
+    <div
+      className="pframe ui-pframe"
+      style={{ viewTransitionName: `project-preview-${slug}` }}
+      aria-hidden="true"
+    >
       <div className="pframe-bar ui-pframe-bar">
         {[0, 1, 2].map((dot) => (
           <i key={dot} className="ui-preview-window-dot" />
@@ -46,7 +50,10 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.year ? ` · ${project.year}` : ""}
         </div>
 
-        <h3 className="ui-project-card-title">
+        <h3
+          className="ui-project-card-title"
+          style={{ viewTransitionName: `project-title-${project.slug}` }}
+        >
           <Link
             href={`/${project.slug}`}
             className="pcard-stretch text-inherit no-underline after:absolute after:inset-0 after:z-1"
@@ -68,7 +75,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="pcard-actions ui-pcard-actions">
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noreferrer" className={projectActionClass}>
-              {project.demoLabel ?? "Live Demo"} <ArrowUpRight size={13} />
+              {project.demoLabel ?? "Live Demo"} <ArrowUpRight className="action-arrow" size={13} />
             </a>
           )}
 
@@ -79,7 +86,7 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noreferrer"
               className={projectActionClass}
             >
-              <Github size={13} /> Source <ArrowUpRight size={13} />
+              <Github size={13} /> Source <ArrowUpRight className="action-arrow" size={13} />
             </a>
           )}
 

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ViewTransitions } from "next-view-transitions";
 import "../styles/global.css";
 import { ROOT_METADATA } from "@/constants/seo";
 
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body>
-        {children}
+        <ViewTransitions>{children}</ViewTransitions>
         <Analytics />
         <SpeedInsights />
       </body>

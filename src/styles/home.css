@@ -288,59 +288,7 @@
     @apply m-0 max-w-152 text-base leading-relaxed text-muted-foreground;
   }
 }
-@utility ui-link-pills {
-  @variant max-small {
-    & a,
-    & button {
-      @apply min-h-11;
-    }
-  }
-  @apply m-0 flex animate-none flex-wrap justify-end gap-1.5;
-  @variant max-document {
-    @apply justify-start;
-  }
-  & .x-mark {
-    @apply text-sm leading-none;
-  }
-  & a {
-    @apply inline-flex cursor-pointer items-center gap-control-gap rounded-pill border border-solid;
-    @apply surface-pill px-card-inset py-pill-inset font-family-inherit text-sm;
-    @apply line-height-inherit font-medium text-foreground font-style-inherit font-stretch-inherit;
-    @apply no-underline font-variant-inherit;
-  }
-  & a:active {
-    @apply transform-(--motion-press) filter-(--filter-link-pills-filter) duration-100;
-  }
-  & a:active {
-    @variant touch {
-      @apply border-interactive-border;
-    }
-  }
-  & a:hover {
-    @variant can-hover {
-      @apply transform-(--motion-hover-lift) border-interactive-border;
-    }
-  }
-  & button {
-    @apply inline-flex cursor-pointer items-center gap-control-gap rounded-pill border border-solid;
-    @apply surface-pill px-card-inset py-pill-inset font-family-inherit text-sm;
-    @apply line-height-inherit font-medium text-foreground font-style-inherit font-stretch-inherit;
-    @apply no-underline font-variant-inherit;
-  }
-  & button:active {
-    @apply transform-(--motion-press) filter-(--filter-link-pills-filter) duration-100;
-  }
-  & button:active {
-    @variant touch {
-      @apply border-interactive-border;
-    }
-  }
-  & button:hover {
-    @variant can-hover {
-      @apply transform-(--motion-hover-lift) border-interactive-border;
-    }
-  }
-} /* components/home/icon-button.tsx */
+/* components/home/icon-button.tsx */
 @utility ui-icon-button {
   @variant max-small {
     @apply min-h-11 w-11;

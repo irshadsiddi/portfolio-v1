@@ -2,6 +2,7 @@
 @import "../styles/tokens.css";
 @import "../styles/primitives.css";
 @import "../styles/components.css";
+@import "../styles/interactions.css";
 @custom-variant dark (&:is(.dark *));
 /* Keep the original inclusive breakpoints, including their exact boundary pixels. */
 @custom-variant max-phone (@media (width <= 480px));
@@ -48,36 +49,18 @@
   @apply font-mono text-xs leading-normal tracking-wider text-muted-foreground uppercase;
 }
 @utility surface-pill {
-  background-color: transparent;
-  background-image: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--background) 92%, white) 0%,
-    color-mix(in oklab, var(--background) 96%, var(--foreground)) 52%,
-    color-mix(in oklab, var(--background) 90%, var(--foreground)) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 color-mix(in oklab, white 75%, transparent),
-    inset 0 -1px 0 color-mix(in oklab, var(--foreground) 6%, transparent),
-    0 1px 2px color-mix(in oklab, black 10%, transparent),
-    0 4px 10px -6px color-mix(in oklab, black 25%, transparent);
-  border-color: color-mix(in oklab, var(--foreground) 14%, var(--border));
-  transition-property: transform, box-shadow, border-color;
-  transition-duration: 0.42s;
-  transition-timing-function: var(--spring-snappy);
+  background-color: color-mix(in oklab, var(--background) 97%, var(--foreground));
+  background-image: none;
+  box-shadow: var(--shadow-pill);
+  border-color: var(--border);
+  transition-property: transform, background-color, box-shadow, border-color, color;
+  transition-duration: 180ms;
+  transition-timing-function: var(--spring-settle);
   @variant dark {
-    background-image: linear-gradient(
-      180deg,
-      oklch(0.24 0 0) 0%,
-      oklch(0.18 0 0) 52%,
-      oklch(0.14 0 0) 100%
-    );
-    box-shadow:
-      inset 0 1px 0 oklch(1 0 0 / 0.12),
-      inset 0 -1px 0 oklch(0 0 0 / 0.4),
-      0 1px 2px oklch(0 0 0 / 0.5),
-      0 6px 14px -8px oklch(0 0 0 / 0.7);
+    box-shadow: var(--shadow-pill-dark);
   }
 }
+
 :root {
   interpolate-size: allow-keywords;
   --spring-snappy: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -321,22 +304,20 @@
     color: var(--background);
   }
   .motion-ready [data-reveal] > * {
-    opacity: 0;
-    transform: translateY(16px);
-    filter: blur(4px);
+    opacity: 0.65;
+    transform: translateY(6px);
     transition:
-      opacity 0.38s ease-out,
-      filter 0.42s ease-out,
-      transform 0.72s var(--spring-gentle);
+      opacity 0.2s ease-out,
+      transform 0.28s var(--spring-settle);
   }
   .motion-ready [data-reveal] > *:nth-child(2) {
-    transition-delay: 0.12s;
+    transition-delay: 0.035s;
   }
   .motion-ready [data-reveal] > *:nth-child(3) {
-    transition-delay: 0.22s;
+    transition-delay: 0.07s;
   }
   .motion-ready [data-reveal] > *:nth-child(4) {
-    transition-delay: 0.32s;
+    transition-delay: 0.105s;
   }
   .motion-ready [data-reveal].is-visible > * {
     opacity: 1;

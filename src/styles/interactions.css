@@ -1,0 +1,106 @@
+.hero-actions {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.hero-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-primary-actions > :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--background);
+  box-shadow: var(--shadow-pill);
+  color: var(--foreground);
+  font: 500 14px / 1.2 var(--font-sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 180ms var(--spring-snappy),
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.hero-primary-actions > .hero-resume {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  color: var(--background);
+}
+
+.hero-contact {
+  min-width: 144px;
+}
+
+.hero-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-social-links a {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.action-arrow {
+  flex-shrink: 0;
+  transition: transform 220ms var(--spring-snappy);
+}
+
+@media (hover: hover) {
+  :is(a, button):is(:hover, :focus-visible) > .action-arrow {
+    transform: translate(2px, -2px);
+  }
+  .hero-primary-actions > :is(a, button):hover {
+    transform: translateY(-1px);
+    border-color: var(--muted-foreground);
+  }
+  .hero-social-links a:hover {
+    color: var(--foreground);
+  }
+}
+
+.hero-primary-actions > :is(a, button):active {
+  transform: translateY(1px) scale(0.98);
+  transition-duration: 90ms;
+}
+
+@media (width <= 760px) {
+  .hero-actions {
+    justify-items: start;
+  }
+}
+
+::view-transition-group(*) {
+  animation-duration: 340ms;
+  animation-timing-function: var(--spring-settle);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

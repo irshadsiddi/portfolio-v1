@@ -27,6 +27,15 @@ export const RESUME_LINKS = {
   source: "https://drive.google.com/file/d/1kCivWW1kSQwmU_Pco9TKoos6N079o2B-/view",
 } as const;
 
+export const HERO_ACTIONS = {
+  resume: "View résumé",
+  contact: "Contact me",
+  copied: "Email copied",
+  copyHint: "Copy email address",
+  primaryLabel: "Get in touch",
+  socialLabel: "Find me elsewhere",
+} as const;
+
 export const MONTH_NAMES = [
   "Jan",
   "Feb",

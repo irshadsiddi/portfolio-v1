@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 
@@ -67,13 +67,21 @@ export default async function ProjectPage({ params }: PageProps) {
           {project.year ? ` · ${project.year}` : ""}
         </span>
 
-        <h1 className="ui-project-detail-title">{project.title}</h1>
+        <h1
+          className="ui-project-detail-title"
+          style={{ viewTransitionName: `project-title-${project.slug}` }}
+        >
+          {project.title}
+        </h1>
 
         <p className="ui-page-description">{project.description}</p>
       </header>
 
       {/* Terminal Preview */}
-      <div className="project-terminal self-start overflow-hidden rounded-xl border border-border bg-background">
+      <div
+        className="project-terminal self-start overflow-hidden rounded-xl border border-border bg-background"
+        style={{ viewTransitionName: `project-preview-${project.slug}` }}
+      >
         <div className="preview-bar flex items-center gap-1 border-b border-border px-3 py-2">
           <i className="size-1.5 rounded-full bg-border" />
           <i className="size-1.5 rounded-full bg-border" />
