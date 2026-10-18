@@ -126,28 +126,29 @@
 @utility ui-pcard {
   @apply relative isolate grid grid-cols-1 gap-0 overflow-hidden rounded-pcard-rounded border;
   @apply border-border bg-background p-0 text-inherit no-underline;
-  @apply transition-(--transition-property-pcard-transition) duration-520 ease-spring-gentle;
+  @apply transition-(--transition-property-pcard-transition) duration-240 ease-spring-settle;
   @variant before {
     @apply pointer-events-none absolute inset-0 z-2 rounded-inherited bg-project-edge pcard-mask-image;
-    @apply mask-exclude pcard-mask-clip p-px opacity-0 transition-opacity duration-300;
-    @apply ease-experience-ease will-change-(--will-change-preview-canvas-will-change);
+    @apply mask-exclude pcard-mask-clip p-px opacity-0 transition-opacity duration-180;
+    @apply ease-spring-settle;
   }
   @variant after {
     @apply pointer-events-none absolute inset-0 -z-1 bg-project-spotlight opacity-0 transition-opacity;
-    @apply duration-300 ease-experience-ease will-change-(--will-change-preview-canvas-will-change);
-  }
-  @variant hover {
-    @apply transform-(--motion-card-hover) border-pcard-border bg-card text-foreground;
+    @apply duration-180 ease-spring-settle;
   }
   @variant print {
     @apply break-inside-avoid bg-transparent! shadow-none!;
   }
   @variant can-hover {
     @variant hover {
+      @apply transform-(--motion-card-hover) border-pcard-border bg-card text-foreground;
       @variant before {
         @apply opacity-100;
       }
     }
+  }
+  @variant focus-within {
+    @apply border-pcard-border;
   }
   @variant can-hover {
     @variant hover {

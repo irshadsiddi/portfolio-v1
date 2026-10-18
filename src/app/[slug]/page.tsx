@@ -67,12 +67,7 @@ export default async function ProjectPage({ params }: PageProps) {
           {project.year ? ` · ${project.year}` : ""}
         </span>
 
-        <h1
-          className="ui-project-detail-title"
-          style={{ viewTransitionName: `project-title-${project.slug}` }}
-        >
-          {project.title}
-        </h1>
+        <h1 className="ui-project-detail-title">{project.title}</h1>
 
         <p className="ui-page-description">{project.description}</p>
       </header>

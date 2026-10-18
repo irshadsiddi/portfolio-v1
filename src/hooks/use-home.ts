@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { projects } from "@/constants/projects";
 import { SITE, SOCIAL_LINKS, RESUME_LINKS } from "@/constants/site";
 import { navItems } from "@/constants/navigation";
-import { playThemeWarp } from "@/lib/theme-warp";
+import { playThemeWarp, watchThemeWarpPreparation } from "@/lib/theme-warp";
 const EMAIL = SITE.email;
 export type Cmd = { group: string; title: string; meta: string; run: () => void };
 export function useHome() {
@@ -17,6 +17,8 @@ export function useHome() {
   const [active, setActive] = useState("about");
   const [time, setTime] = useState("--:--:--");
   const [cursor, setCursor] = useState(0);
+
+  useEffect(watchThemeWarpPreparation, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -102,8 +104,14 @@ export function useHome() {
       window.localStorage.setItem("portfolio-theme", next ? "dark" : "light");
     };
     void playThemeWarp({
-      originX: event?.clientX ?? window.innerWidth / 2,
-      originY: event?.clientY ?? window.innerHeight / 2,
+      originX: event?.detail
+        ? event.clientX
+        : (event?.currentTarget.getBoundingClientRect().left ?? window.innerWidth / 2) +
+          (event?.currentTarget.offsetWidth ?? 0) / 2,
+      originY: event?.detail
+        ? event.clientY
+        : (event?.currentTarget.getBoundingClientRect().top ?? window.innerHeight / 2) +
+          (event?.currentTarget.offsetHeight ?? 0) / 2,
       toDark: next,
       onSwitch: applyTheme,
     });
@@ -135,7 +143,7 @@ export function useHome() {
           void copyEmail();
         },
       },
-      { group: "Actions", title: "View résumé", meta: "PDF", run: open(RESUME_LINKS.preview) },
+      { group: "Actions", title: "View resume", meta: "PDF", run: open(RESUME_LINKS.preview) },
       {
         group: "Actions",
         title: "Print portfolio",

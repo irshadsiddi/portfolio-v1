@@ -19,7 +19,7 @@ export function SiteFooter() {
       <div className="ui-footer-details">
         <span>{FOOTER.credit}</span>
         <div className="ui-footer-tools">
-          <span>
+          <span data-theme-live="footer-clock">
             {time} {FOOTER.timezone}
           </span>
           <span>

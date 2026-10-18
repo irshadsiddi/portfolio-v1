@@ -185,13 +185,13 @@
     color-mix(in oklab, var(--foreground) 25%, transparent)
   );
   --background-image-project-edge: radial-gradient(
-    260px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in oklab, var(--foreground) 55%, transparent),
+    160px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--foreground) 38%, transparent),
     transparent 70%
   );
   --background-image-project-spotlight: radial-gradient(
-    420px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in oklab, var(--foreground) 6%, transparent),
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--foreground) 2%, transparent),
     transparent 65%
   );
   /* Shadows */
@@ -297,9 +297,9 @@
   --animate-preview-flow-line-animate: dash 3s linear 0s infinite;
   --animate-preview-chart-bar-animate: grow 1s var(--spring-snappy) 0s 1 normal both;
   --animate-preview-job-dot-running-animate: pulse-soft 1.2s ease-in-out 0s infinite;
-  --transition-property-pcard-transition: border-color, transform, background;
-  --motion-card-hover: translateY(-3px) scale(1.006);
-  --motion-card-touch: translateY(-2px);
+  --transition-property-pcard-transition: border-color, transform, background-color;
+  --motion-card-hover: translateY(-2px);
+  --motion-card-touch: translateY(-1px);
   --scale-heat-hover: 1.18;
   --scale-menu-rest: 0.98;
   --transform-origin-navigation: right;

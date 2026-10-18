@@ -16,7 +16,7 @@
   }
 }
 @utility ui-desktop-nav {
-  @apply flex min-w-0 items-center justify-end gap-5;
+  @apply relative flex min-w-0 items-center justify-end gap-5;
   @variant max-navigation {
     @apply hidden;
   }
@@ -28,22 +28,8 @@
   & button.is-active {
     @apply text-foreground;
   }
-  & button.is-active::after {
-    @apply origin-left transform-(--motion-underline-visible);
-  }
-  & button::after {
-    @apply absolute right-0 bottom-0 left-0 h-px origin-(--transform-origin-navigation);
-    @apply transform-(--motion-underline-hidden) bg-foreground bg-none;
-    @apply transition-(--transition-property-desktop-nav-transition-2) duration-350;
-    @apply ease-desktop-nav-ease content-empty;
-  }
   & button:hover {
     @apply text-foreground;
-  }
-  @variant can-hover {
-    & button:hover::after {
-      @apply origin-left transform-(--motion-underline-visible);
-    }
   }
 }
 @utility ui-nav-tools {

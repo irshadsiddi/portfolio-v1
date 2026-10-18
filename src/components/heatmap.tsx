@@ -118,7 +118,7 @@ export function Heatmap() {
         <div className="contribution-head mb-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
           <div className="contribution-title flex flex-col gap-2">
             <div className="contribution-kicker flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
-              <span className="eyebrow ui-activity-eyebrow">Activity</span>
+          
 
               <span className="contribution-live ui-contribution-live">
                 <i className="ui-contribution-live-dot" />

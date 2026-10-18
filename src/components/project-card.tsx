@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "next-view-transitions";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 
 import { projects, type Project } from "@/constants/projects";
@@ -32,13 +33,29 @@ export function ProjectFrame({ slug }: { slug: string }) {
 }
 
 export function ProjectCard({ project }: { project: Project }) {
+  const pointer = useRef({ x: 0, y: 0 });
+  const frame = useRef(0);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
   return (
     <article
       className="pcard group ui-pcard"
-      onMouseMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        event.currentTarget.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-        event.currentTarget.style.setProperty("--my", `${event.clientY - rect.top}px`);
+      onPointerMove={(event) => {
+        if (event.pointerType === "touch") return;
+        const card = event.currentTarget;
+        pointer.current = { x: event.clientX, y: event.clientY };
+        if (frame.current) return;
+        frame.current = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty("--mx", `${pointer.current.x - rect.left}px`);
+          card.style.setProperty("--my", `${pointer.current.y - rect.top}px`);
+          frame.current = 0;
+        });
+      }}
+      onPointerLeave={() => {
+        cancelAnimationFrame(frame.current);
+        frame.current = 0;
       }}
     >
       <ProjectFrame slug={project.slug} />
@@ -50,10 +67,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.year ? ` · ${project.year}` : ""}
         </div>
 
-        <h3
-          className="ui-project-card-title"
-          style={{ viewTransitionName: `project-title-${project.slug}` }}
-        >
+        <h3 className="ui-project-card-title">
           <Link
             href={`/${project.slug}`}
             className="pcard-stretch text-inherit no-underline after:absolute after:inset-0 after:z-1"

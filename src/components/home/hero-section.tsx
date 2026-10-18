@@ -8,7 +8,7 @@ export function HeroSection() {
   return (
     <>
       <section id="about" className="hero page-width ui-hero">
-        <div className="hero-cover ui-hero-cover">
+        <div className="hero-cover ui-hero-cover" data-theme-live="cover">
           <video
             autoPlay
             loop
@@ -42,7 +42,9 @@ export function HeroSection() {
             <p className="hero-role ui-hero-role">{SITE.role}</p>
             <p className="hero-location ui-hero-location">
               <span>{SITE.location}</span>
-              <span className="whitespace-nowrap">{time} IST</span>
+              <span className="whitespace-nowrap" data-theme-live="hero-clock">
+                {time} IST
+              </span>
             </p>
           </div>
           <div className="profile-now ui-profile-now" aria-label="Current status">

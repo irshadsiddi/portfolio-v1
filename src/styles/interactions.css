@@ -4,6 +4,65 @@
   gap: 12px;
 }
 
+.header-scroll-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.site-header .topbar {
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  transition:
+    background-color 220ms var(--spring-settle),
+    border-bottom-color 220ms var(--spring-settle);
+}
+
+.site-header[data-scrolled="true"] .topbar {
+  background-color: color-mix(in oklab, var(--background) 96%, transparent);
+  border-bottom-color: var(--border);
+}
+
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-profile > .profile-mark,
+  .hero-profile > .hero-copy,
+  .hero-profile > .profile-now,
+  .hero-intro > p,
+  .hero-primary-actions,
+  .hero-social-links {
+    animation: hero-settle 280ms var(--spring-settle) both;
+  }
+  .hero-profile > .hero-copy {
+    animation-delay: 40ms;
+  }
+  .hero-profile > .profile-now {
+    animation-delay: 80ms;
+  }
+  .hero-intro > p {
+    animation-delay: 120ms;
+  }
+  .hero-primary-actions {
+    animation-delay: 170ms;
+  }
+  .hero-social-links {
+    animation-delay: 220ms;
+  }
+}
+
 .hero-primary-actions {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +94,30 @@
   background: var(--foreground);
   border-color: var(--foreground);
   color: var(--background);
+}
+
+.nav-active-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--indicator-width, 0px);
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--foreground);
+  transform: translateX(var(--indicator-x, 0px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.desktop-nav[data-indicator-ready="true"] .nav-active-indicator {
+  transition:
+    transform 320ms var(--spring-settle),
+    width 320ms var(--spring-settle),
+    opacity 140ms ease;
+}
+
+.desktop-nav[data-indicator-visible="true"] .nav-active-indicator {
+  opacity: 1;
 }
 
 .hero-contact {
@@ -88,16 +171,47 @@
 }
 
 ::view-transition-group(*) {
-  animation-duration: 340ms;
+  animation-duration: 330ms;
   animation-timing-function: var(--spring-settle);
 }
 
-::view-transition-old(root),
+/* Only the preview shares geometry; text fades at its natural size. */
+::view-transition-group(root) {
+  animation: none;
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root) {
+  animation: page-leave 130ms ease-out both;
+}
+
 ::view-transition-new(root) {
-  animation-duration: 160ms;
+  animation: page-enter 220ms var(--spring-settle) 60ms both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .pcard:hover,
+  .pcard:active {
+    transform: none !important;
+  }
+  .pcard::before,
+  .pcard::after {
+    display: none;
+  }
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
