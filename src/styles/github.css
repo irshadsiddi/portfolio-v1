@@ -103,7 +103,7 @@
 @utility ui-heatmap-canvas {
   @apply pl-activity-offset;
   @variant max-document {
-    @apply min-w-[48rem];
+    @apply min-w-3xl;
   }
 }
 @utility ui-heatmap-months {
