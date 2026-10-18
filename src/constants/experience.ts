@@ -19,7 +19,7 @@ export const education = {
 } as const;
 
 export const profile = {
-  heading: "Full-stack development, grounded AI, and real-world impact.",
+  heading: "Full-stack development, grounded AI, and real world impact.",
   description:
-    "I’m a Computer Science and Engineering undergraduate at NIT Durgapur. My work spans production web platforms, campus AI assistants, mobile applications, and open-source integrations.",
+    "I’m a Computer Science and Engineering undergraduate at NIT Durgapur. My work spans production web platforms, campus AI assistants, mobile applications, and open source integrations.",
 } as const;

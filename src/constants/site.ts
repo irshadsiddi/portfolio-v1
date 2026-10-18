@@ -8,7 +8,7 @@ export const SITE = {
   availability: "Available for roles",
   nowStatus: "CSE undergraduate at NIT Durgapur",
   intro:
-    "I build full-stack web platforms, grounded AI assistants, and mobile apps — from campus tools to production systems.",
+    "I build full stack web platforms, grounded AI assistants, and mobile apps from campus tools to production systems.",
   coverCaption: "Systems / interfaces / intelligence",
   coverVideo: "/portfolio-cover.mp4",
   coverPoster: "/portfolio-cover.jpg",
@@ -28,7 +28,7 @@ export const RESUME_LINKS = {
 } as const;
 
 export const HERO_ACTIONS = {
-  resume: "View résumé",
+  resume: "View resume",
   contact: "Contact me",
   copied: "Email copied",
   copyHint: "Copy email address",

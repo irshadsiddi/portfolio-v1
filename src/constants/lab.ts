@@ -9,7 +9,7 @@ export const labItems = [
   {
     kind: "Profile",
     title: "CodeChef",
-    note: "2 star · maximum rating 1412, as listed on my résumé.",
+    note: "2 star · maximum rating 1412.",
     date: "",
     href: "https://www.codechef.com/users/irshadsiddi",
   },
@@ -30,7 +30,7 @@ export const recognitionItems = [
   { label: "TS EAMCET 2023", value: "Rank 1,352 among 3.2L+ candidates · top 0.4%." },
   {
     label: "Problem solving",
-    value: "300+ DSA problems solved across Codeforces and CodeChef, as listed on my résumé.",
+    value: "300+ DSA problems solved across Codeforces and CodeChef.",
   },
 ] as const;
 
